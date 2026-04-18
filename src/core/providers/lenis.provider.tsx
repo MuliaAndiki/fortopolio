@@ -1,9 +1,9 @@
 'use client';
 
-import { ReactNode, useEffect } from 'react';
-import { ReactLenis, useLenis } from 'lenis/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { ReactLenis, useLenis } from 'lenis/react';
+import { ReactNode, useEffect } from 'react';
 
 interface LenisProviderProps {
   children: ReactNode;

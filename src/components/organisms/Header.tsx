@@ -1,4 +1,4 @@
-import Link from "next/link";
+import Link from 'next/link';
 
 export interface NavigationItem {
   label: string;
@@ -11,22 +11,19 @@ export interface HeaderProps {
 }
 
 const defaultNavigationItems: NavigationItem[] = [
-  { label: "Home", href: "/" },
-  { label: "Features", href: "#features" },
-  { label: "Contact", href: "#contact" },
+  { label: 'Home', href: '/' },
+  { label: 'Features', href: '#features' },
+  { label: 'Contact', href: '#contact' },
 ];
 
 export function Header({
-  logoText = "Forto",
+  logoText = 'Forto',
   navigationItems = defaultNavigationItems,
 }: HeaderProps) {
   return (
     <header className="border-b border-slate-200 bg-white">
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <Link
-          href="/"
-          className="text-xl font-bold tracking-tight text-slate-900"
-        >
+        <Link href="/" className="text-xl font-bold tracking-tight text-slate-900">
           {logoText}
         </Link>
 

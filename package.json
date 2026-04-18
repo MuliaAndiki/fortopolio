@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bun --bun next dev",
-    "build": "bun --bun next build",
-    "start": "bun --bun next start",
-    "lint": "eslint src --ext .ts,.tsx",
-    "lint:fix": "eslint src --ext .ts,.tsx --fix",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
-    "format:check": "prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\""
+    "dev": "bun run next dev",
+    "build": "bun run next build",
+    "start": "bun run next start",
+    "lint": "npx eslint \"src/**/*.{ts,tsx,js,jsx}\"",
+    "lint:fix": "npx eslint \"src/**/*.{ts,tsx,js,jsx}\" --fix",
+    "format": "npx prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "format:check": "npx prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "deveploy": " npx prettier --check \"**/*.{ts,tsx,js,jsx,json,md}\" && npx prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" && bun run build "
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",

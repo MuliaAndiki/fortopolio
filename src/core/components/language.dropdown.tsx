@@ -1,15 +1,17 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
+import { ChevronDown } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
-import { getLanguageName, Language } from "@/config/i18n.config";
-import { useLanguage } from "@/hooks/useLanguage";
+} from '@/components/ui/dropdown-menu';
+import { getLanguageName, Language } from '@/config/i18n.config';
+
+import { useLanguage } from '../providers/languageProvider';
 
 export default function LanguageDropdown() {
   const { currentLanguage, changeLanguage, languages } = useLanguage();

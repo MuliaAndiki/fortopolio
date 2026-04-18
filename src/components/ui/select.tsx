@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import {
   createContext,
@@ -9,8 +9,9 @@ import {
   useEffect,
   useMemo,
   useState,
-} from "react";
-import { cn } from "@/utils/classname";
+} from 'react';
+
+import { cn } from '@/utils/classname';
 
 type SelectContextValue = {
   open: boolean;
@@ -27,7 +28,7 @@ const SelectContext = createContext<SelectContextValue | null>(null);
 function useSelectContext() {
   const context = useContext(SelectContext);
   if (!context) {
-    throw new Error("Select components must be used inside Select");
+    throw new Error('Select components must be used inside Select');
   }
   return context;
 }
@@ -40,12 +41,7 @@ export interface SelectProps {
   autoComplete?: string;
 }
 
-export function Select({
-  children,
-  defaultValue,
-  onValueChange,
-  disabled,
-}: SelectProps) {
+export function Select({ children, defaultValue, onValueChange, disabled }: SelectProps) {
   const [open, setOpen] = useState(false);
   const [value, setValueState] = useState<string | undefined>(defaultValue);
   const [labels, setLabels] = useState<Record<string, string>>({});
@@ -56,7 +52,7 @@ export function Select({
       onValueChange?.(nextValue);
       setOpen(false);
     },
-    [onValueChange],
+    [onValueChange]
   );
 
   const registerOption = useCallback((optionValue: string, label: string) => {
@@ -76,7 +72,7 @@ export function Select({
       labels,
       registerOption,
     }),
-    [open, setOpen, value, setValue, disabled, labels, registerOption],
+    [open, setOpen, value, setValue, disabled, labels, registerOption]
   );
 
   return (
@@ -88,12 +84,7 @@ export function Select({
 
 export type SelectTriggerProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
-export function SelectTrigger({
-  className,
-  onClick,
-  children,
-  ...props
-}: SelectTriggerProps) {
+export function SelectTrigger({ className, onClick, children, ...props }: SelectTriggerProps) {
   const { open, setOpen, disabled } = useSelectContext();
 
   return (
@@ -101,8 +92,8 @@ export function SelectTrigger({
       type="button"
       disabled={disabled}
       className={cn(
-        "flex w-full items-center justify-between rounded-md border border-slate-300 bg-white px-3 py-2 text-left text-sm",
-        className,
+        'flex w-full items-center justify-between rounded-md border border-slate-300 bg-white px-3 py-2 text-left text-sm',
+        className
       )}
       onClick={(event) => {
         onClick?.(event);
@@ -121,16 +112,12 @@ export interface SelectValueProps extends HTMLAttributes<HTMLSpanElement> {
   placeholder?: string;
 }
 
-export function SelectValue({
-  placeholder,
-  className,
-  ...props
-}: SelectValueProps) {
+export function SelectValue({ placeholder, className, ...props }: SelectValueProps) {
   const { value, labels } = useSelectContext();
   const displayValue = value ? (labels[value] ?? value) : placeholder;
 
   return (
-    <span className={cn("block truncate", className)} {...props}>
+    <span className={cn('block truncate', className)} {...props}>
       {displayValue}
     </span>
   );
@@ -146,8 +133,8 @@ export function SelectContent({ className, ...props }: SelectContentProps) {
   return (
     <div
       className={cn(
-        "absolute z-50 mt-1 w-full rounded-md border border-slate-200 bg-white p-1 shadow-md",
-        className,
+        'absolute z-50 mt-1 w-full rounded-md border border-slate-200 bg-white p-1 shadow-md',
+        className
       )}
       {...props}
     />
@@ -158,15 +145,9 @@ export interface SelectItemProps extends HTMLAttributes<HTMLDivElement> {
   value: string;
 }
 
-export function SelectItem({
-  value,
-  className,
-  children,
-  onClick,
-  ...props
-}: SelectItemProps) {
+export function SelectItem({ value, className, children, onClick, ...props }: SelectItemProps) {
   const { value: selectedValue, setValue, registerOption } = useSelectContext();
-  const label = typeof children === "string" ? children : value;
+  const label = typeof children === 'string' ? children : value;
 
   useEffect(() => {
     registerOption(value, label);
@@ -177,8 +158,8 @@ export function SelectItem({
       role="option"
       aria-selected={selectedValue === value}
       className={cn(
-        "cursor-pointer rounded-sm px-2 py-1.5 text-sm text-slate-700 hover:bg-slate-100",
-        className,
+        'cursor-pointer rounded-sm px-2 py-1.5 text-sm text-slate-700 hover:bg-slate-100',
+        className
       )}
       onClick={(event) => {
         onClick?.(event);
