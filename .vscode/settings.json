@@ -1,5 +1,12 @@
 {
   "chat.tools.terminal.autoApprove": {
     "bun": true
-  }
+  },
+  "python-envs.pythonProjects": [
+    {
+      "path": "src/components/pages/public",
+      "envManager": "ms-python.python:venv",
+      "packageManager": "ms-python.python:pip"
+    }
+  ]
 }

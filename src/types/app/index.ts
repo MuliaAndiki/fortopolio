@@ -3,3 +3,8 @@ export interface SidebarContentType {
   url: string;
   icon: any;
 }
+
+export interface TemplateInitailProps {
+  title: string;
+  desc: string;
+}

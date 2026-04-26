@@ -27,7 +27,9 @@ const SidebarSection: React.FC<SidebarSectionProps> = ({ isCollapsed, items, pat
                 )}
               >
                 <Icon icon={item.icon} className="h-4 w-4 lg:h-8 lg:w-8" />
-                <span className="text-base lg:text-lg">{!isCollapsed && item.title}</span>
+                <span className="text-base font-semibold lg:text-lg">
+                  {!isCollapsed && item.title}
+                </span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
