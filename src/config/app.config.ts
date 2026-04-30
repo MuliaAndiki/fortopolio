@@ -116,7 +116,7 @@ export const SidebarMenuConfig: SidebarContentType[] = [
   {
     title: 'Dashboard',
     icon: 'cuida:dashboard-outline',
-    url: '/dashboard',
+    url: '/dashboards',
   },
   {
     title: 'Chat Room',
@@ -126,11 +126,11 @@ export const SidebarMenuConfig: SidebarContentType[] = [
   {
     title: 'Contact',
     icon: 'fluent:contact-card-32-regular',
-    url: '/contact',
+    url: '/contacts',
   },
   {
     title: 'Smart Talk',
     icon: 'mingcute:ai-line',
-    url: '/',
+    url: '/smart-talks',
   },
 ];

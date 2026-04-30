@@ -9,21 +9,12 @@ export const siteConfig = {
   locale: 'en_US',
   themeColor: '#0EA5A4',
   backgroundColor: '#0F172A',
-  keywords: [
-    'AERIS',
-    'environmental dashboard',
-    'air quality monitoring',
-    'heat risk analysis',
-    'urban climate intelligence',
-    'flood risk detection',
-    'green space proximity',
-    'location based environmental app',
-  ],
+  keywords: ['Mulia Andiki', 'Fortopolio Mulia Andiki'],
 };
 export const metadata: Metadata = {
   title: {
-    default: 'AERIS - Environmental Intelligence Platform',
-    template: '%s | AERIS',
+    default: 'Fortopolio - Mulia Andiki',
+    template: '%s | Fortopolio',
   },
 
   description: siteConfig.description,
@@ -32,8 +23,8 @@ export const metadata: Metadata = {
 
   applicationName: 'AERIS',
   authors: [{ name: 'AERIS Team' }],
-  creator: 'AERIS',
-  publisher: 'AERIS',
+  creator: 'Mulia Andiki',
+  publisher: 'Mulia Andiki',
 
   manifest: '/favicon/site.webmanifest',
 

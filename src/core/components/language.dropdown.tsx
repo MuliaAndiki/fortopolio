@@ -20,7 +20,7 @@ export default function LanguageDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="p-0">
-          <span>{currentLanguage.toUpperCase()}</span>
+          <span className="font-semibold">{currentLanguage.toUpperCase()}</span>
           <ChevronDown className="ml-1 h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
@@ -31,7 +31,7 @@ export default function LanguageDropdown() {
             onClick={() => changeLanguage(lang)}
             className="cursor-pointer"
           >
-            <span>{getLanguageName(lang)}</span>
+            <span className="font-semibold">{getLanguageName(lang)}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>
