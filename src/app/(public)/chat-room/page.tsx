@@ -1,5 +1,5 @@
 import ChatRoomHeroSection from '@/components/pages/public/chat-room/hero-section';
-import { SidebarLayout } from '@/core/layouts/sidebar.layout';
+import MainLayout from '@/core/layouts/Main.Layout';
 
 export default function ChatRoom() {
   const raw = {
@@ -7,8 +7,8 @@ export default function ChatRoom() {
     desc: 'initial schreen',
   };
   return (
-    <SidebarLayout>
+    <MainLayout>
       <ChatRoomHeroSection desc={raw.desc} title={raw.title} />
-    </SidebarLayout>
+    </MainLayout>
   );
 }

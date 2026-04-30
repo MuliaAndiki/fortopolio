@@ -2,8 +2,8 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { CheckIcon, ChevronDown, WandSparkles, XCircle, XIcon } from 'lucide-react';
 import React from 'react';
 
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/atoms/badge';
+import { Button } from '@/components/atoms/button';
 import {
   Command,
   CommandEmpty,
@@ -12,16 +12,16 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from '@/components/ui/command';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+} from '@/components/atoms/command';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/atoms/popover';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select';
-import { Separator } from '@/components/ui/separator';
+} from '@/components/atoms/select';
+import { Separator } from '@/components/atoms/separator';
 import { cn } from '@/utils/classname';
 
 const multiSelectVariants = cva('m-1 transition ease-in-out', {

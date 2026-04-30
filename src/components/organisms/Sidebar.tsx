@@ -1,41 +1,57 @@
-import { Icon } from '@iconify/react/dist/iconify.js';
 import Link from 'next/link';
+import type { MouseEvent } from 'react';
 
-import { SidebarMenu, SidebarMenuButton, SidebarMenuItem } from '@/components/ui/sidebar';
-import { SidebarContentType } from '@/types/app';
-import { cn } from '@/utils/classname';
+import { SidebarContentType } from '@/types/app/core-types';
+import { isActiveMenu, smoothScrolltoSection } from '@/utils';
 
 interface SidebarSectionProps {
   isCollapsed: boolean;
-  items: any;
+  items: SidebarContentType[];
   pathname: string;
+  onNavigate?: () => void;
 }
 
-const SidebarSection: React.FC<SidebarSectionProps> = ({ isCollapsed, items, pathname }) => {
+const SidebarSection: React.FC<SidebarSectionProps> = ({
+  isCollapsed,
+  items,
+  pathname,
+  onNavigate,
+}) => {
+  const handleItemClick = (event: MouseEvent<HTMLAnchorElement>, url: string) => {
+    if (url.startsWith('#')) {
+      event.preventDefault();
+      smoothScrolltoSection(url);
+    }
+    onNavigate?.();
+  };
+
   return (
-    <SidebarMenu>
-      {items.map((item: SidebarContentType) => {
-        const isActive = pathname === item.url;
+    <ul className="flex flex-col gap-2 px-5">
+      {items.map((item) => {
+        const isActive = isActiveMenu(item.url, pathname);
+        const IconComponent = item.icon;
+
         return (
-          <SidebarMenuItem key={item.title}>
-            <SidebarMenuButton asChild tooltip={isCollapsed ? item.title : undefined}>
-              <Link
-                href={item.url}
-                className={cn(
-                  'flex items-center gap-3 rounded-lg p-6  text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 h-10',
-                  isActive && 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50'
-                )}
-              >
-                <Icon icon={item.icon} className="h-4 w-4 lg:h-8 lg:w-8" />
-                <span className="text-base font-semibold lg:text-lg">
-                  {!isCollapsed && item.title}
-                </span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          <li key={item.title} className="text-xs w-full">
+            <Link
+              href={item.url}
+              onClick={(event) => handleItemClick(event, item.url)}
+              className={`flex items-center w-full gap-3 py-2.5 p-3 rounded-lg duration-200 transition-colors ${
+                isActive
+                  ? 'text-neutral-01 bg-charcoal-green-lighter font-medium'
+                  : 'text-neutral-02 hover:bg-moss-stone/10'
+              }`}
+            >
+              <IconComponent
+                className="w-5 h-5 lg:w-6 lg:h-6 flex-shrink-0"
+                variant={isActive ? 'filled' : 'outline'}
+              />
+              {!isCollapsed && <span className="text-sm font-medium">{item.title}</span>}
+            </Link>
+          </li>
         );
       })}
-    </SidebarMenu>
+    </ul>
   );
 };
 

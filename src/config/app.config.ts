@@ -1,6 +1,14 @@
 import React from 'react';
 
-import { SidebarContentType } from '@/types/app';
+import ActivityIcon from '@/components/atoms/icons/ActivityIcon';
+import ChatIcon from '@/components/atoms/icons/ChatIcon';
+import DashboardIcon from '@/components/atoms/icons/DashboardIcon';
+import FireIcon from '@/components/atoms/icons/FireIcon';
+import InfoCircleIcon from '@/components/atoms/icons/InfoCircleIcon';
+import NotebookIcon from '@/components/atoms/icons/NotebookIcon';
+import TrophyIcon from '@/components/atoms/icons/TrophyIcon';
+import UsersIcon from '@/components/atoms/icons/UsersIcon';
+import { SidebarContentType } from '@/types/app/core-types';
 
 interface AppConfig {
   name: string;
@@ -96,41 +104,41 @@ export const SidebarMenuConfig: SidebarContentType[] = [
   {
     title: 'Home',
     url: '/',
-    icon: 'tabler:home',
+    icon: ActivityIcon,
   },
   {
     title: 'About',
-    icon: 'solar:user-outline',
+    icon: InfoCircleIcon,
     url: '/about',
   },
   {
     title: 'Achievements',
-    icon: 'material-symbols-light:terminal',
+    icon: TrophyIcon,
     url: '/achievements',
   },
   {
     title: 'Projects',
-    icon: 'wordpress:archive',
+    icon: NotebookIcon,
     url: '/projects',
   },
   {
     title: 'Dashboard',
-    icon: 'cuida:dashboard-outline',
+    icon: DashboardIcon,
     url: '/dashboards',
   },
   {
     title: 'Chat Room',
-    icon: 'fluent:chat-24-regular',
+    icon: ChatIcon,
     url: '/chat-room',
   },
   {
     title: 'Contact',
-    icon: 'fluent:contact-card-32-regular',
+    icon: UsersIcon,
     url: '/contacts',
   },
   {
     title: 'Smart Talk',
-    icon: 'mingcute:ai-line',
+    icon: FireIcon,
     url: '/smart-talks',
   },
 ];

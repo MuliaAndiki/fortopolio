@@ -1,5 +1,5 @@
 import ProjectHeroSection from '@/components/pages/public/projects/hero-section';
-import { SidebarLayout } from '@/core/layouts/sidebar.layout';
+import MainLayout from '@/core/layouts/Main.Layout';
 
 export default function Project() {
   const raw = {
@@ -7,8 +7,8 @@ export default function Project() {
     desc: 'Project Initial screen',
   };
   return (
-    <SidebarLayout>
+    <MainLayout>
       <ProjectHeroSection desc={raw.desc} title={raw.title} />
-    </SidebarLayout>
+    </MainLayout>
   );
 }
