@@ -1,44 +1,39 @@
-"use client";
+'use client';
 
-import {
-  defaultLanguage,
-  LANGUAGE_STORAGE_KEY,
-  languages,
-  type Language,
-} from "@/config/i18n.config";
-import { useEffect, useMemo, useState } from "react";
+import { useLanguage } from '@/core/providers/languageProvider';
+import enTranslations from '@/pkg/i18n/locales/en/common.json';
+import idTranslations from '@/pkg/i18n/locales/id/common.json';
 
-export function useLanguage() {
-  const [currentLanguage, setCurrentLanguage] =
-    useState<Language>(defaultLanguage);
+const translations: Record<string, any> = {
+  en: enTranslations,
+  id: idTranslations,
+};
 
-  useEffect(() => {
-    const storedLanguage = localStorage.getItem(
-      LANGUAGE_STORAGE_KEY,
-    ) as Language | null;
+export const useTranslate = () => {
+  const { currentLanguage } = useLanguage();
 
-    if (storedLanguage && languages.includes(storedLanguage)) {
-      setCurrentLanguage(storedLanguage);
-      document.documentElement.lang = storedLanguage;
-      return;
+  const t = (key: string, params?: Record<string, string | number>): string => {
+    const keys = key.split('.');
+    let value: any = translations[currentLanguage];
+
+    for (const k of keys) {
+      if (value && typeof value === 'object' && k in value) {
+        value = value[k];
+      } else {
+        // Fallback to key if translation not found
+        return key;
+      }
     }
 
-    document.documentElement.lang = defaultLanguage;
-  }, []);
+    // Handle string interpolation (e.g., {{count}})
+    if (typeof value === 'string' && params) {
+      return value.replace(/\{\{(\w+)\}\}/g, (match, paramKey) => {
+        return params[paramKey]?.toString() || match;
+      });
+    }
 
-  const changeLanguage = (nextLanguage: Language) => {
-    if (!languages.includes(nextLanguage)) return;
-
-    setCurrentLanguage(nextLanguage);
-    localStorage.setItem(LANGUAGE_STORAGE_KEY, nextLanguage);
-    document.documentElement.lang = nextLanguage;
+    return typeof value === 'string' ? value : key;
   };
 
-  const availableLanguages = useMemo(() => [...languages], []);
-
-  return {
-    currentLanguage,
-    changeLanguage,
-    languages: availableLanguages,
-  };
-}
+  return { t, currentLanguage };
+};

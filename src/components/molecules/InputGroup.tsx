@@ -1,7 +1,7 @@
-import { Input, Label } from "../atoms";
-import type { InputProps } from "../atoms";
+import type { InputProps } from '../atoms';
+import { Input, Label } from '../atoms';
 
-export interface InputGroupProps extends Omit<InputProps, "id" | "type"> {
+export interface InputGroupProps extends Omit<InputProps, 'id' | 'type'> {
   id: string;
   label: string;
   errorMessage?: string;
@@ -12,12 +12,11 @@ export function InputGroup({
   id,
   label,
   errorMessage,
-  containerClassName = "",
+  containerClassName = '',
   ...inputProps
 }: InputGroupProps) {
   const errorId = errorMessage ? `${id}-error` : undefined;
-  const containerClasses =
-    `flex w-full flex-col gap-2 ${containerClassName}`.trim();
+  const containerClasses = `flex w-full flex-col gap-2 ${containerClassName}`.trim();
 
   return (
     <div className={containerClasses}>

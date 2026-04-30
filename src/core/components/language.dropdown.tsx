@@ -1,15 +1,17 @@
-"use client";
+'use client';
 
-import { Button } from "@/components/ui/button";
+import { ChevronDown } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
-import { getLanguageName, Language } from "@/config/i18n.config";
-import { useLanguage } from "@/hooks/useLanguage";
+} from '@/components/ui/dropdown-menu';
+import { getLanguageName, Language } from '@/config/i18n.config';
+
+import { useLanguage } from '../providers/languageProvider';
 
 export default function LanguageDropdown() {
   const { currentLanguage, changeLanguage, languages } = useLanguage();
@@ -18,7 +20,7 @@ export default function LanguageDropdown() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="p-0">
-          <span>{currentLanguage.toUpperCase()}</span>
+          <span className="font-semibold">{currentLanguage.toUpperCase()}</span>
           <ChevronDown className="ml-1 h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
@@ -29,7 +31,7 @@ export default function LanguageDropdown() {
             onClick={() => changeLanguage(lang)}
             className="cursor-pointer"
           >
-            <span>{getLanguageName(lang)}</span>
+            <span className="font-semibold">{getLanguageName(lang)}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

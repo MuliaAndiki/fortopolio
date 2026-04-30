@@ -1,14 +1,15 @@
-"use client";
+'use client';
 
-import React from "react";
-import { useSelector } from "react-redux";
-import type { RootState } from "@/store/store/index";
-import { usePathname, useRouter } from "next/navigation";
-import { getCookie } from "cookies-next";
-import { useAppDispatch } from "@/hooks/dispatch/dispatch";
-import { setCurrentUser } from "@/store/authSlice/authSlice";
-import { APP_SESSION_COOKIE_KEY } from "@/config/cookies.config";
-import type { userSchema } from "@/types/api";
+import { getCookie } from 'cookies-next';
+import { usePathname, useRouter } from 'next/navigation';
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+import { APP_SESSION_COOKIE_KEY } from '@/config/cookies.config';
+import { useAppDispatch } from '@/hooks/dispatch/dispatch';
+import { setCurrentUser } from '@/store/authSlice/authSlice';
+import type { RootState } from '@/store/store/index';
+import type { userSchema } from '@/types/api';
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -30,17 +31,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   React.useEffect(() => {
     const isAuthPage =
-      pathname?.startsWith("/login") ||
-      pathname?.startsWith("/register") ||
-      pathname?.startsWith("/home") ||
-      pathname?.startsWith("/forgotPassword") ||
-      pathname?.startsWith("/reset") ||
-      pathname?.startsWith("/otp");
+      pathname?.startsWith('/login') ||
+      pathname?.startsWith('/register') ||
+      pathname?.startsWith('/home') ||
+      pathname?.startsWith('/forgotPassword') ||
+      pathname?.startsWith('/reset') ||
+      pathname?.startsWith('/otp');
 
     const isAuthenticated = Boolean(currentUser?.user?.token);
 
     if (!isAuthenticated && !isAuthPage) {
-      router.replace("/login");
+      router.replace('/login');
       return;
     }
 

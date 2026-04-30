@@ -1,64 +1,70 @@
-"use client";
+'use client';
 
-import { usePathname } from "next/navigation";
+import Image from 'next/image';
+import { usePathname } from 'next/navigation';
 
+import SidebarSection from '@/components/organisms/Sidebar';
+import { Separator } from '@/components/ui/separator';
 import {
   Sidebar,
   SidebarContent,
   SidebarGroup,
-  SidebarGroupLabel,
+  SidebarGroupContent,
   SidebarHeader,
   useSidebar,
-} from "@/components/ui/sidebar";
-import Image from "next/image";
-import { kebabCaseToWords } from "@/utils/string.format";
+} from '@/components/ui/sidebar';
+import { SidebarMenuConfig } from '@/config/app.config';
+
+import LanguageDropdown from './language.dropdown';
+import ThemeToggle from './theme-toggle';
 
 export function AppSidebar() {
   const pathname = usePathname();
   const { state } = useSidebar();
-  const isCollapsed = state === "collapsed";
+  const isCollapsed = state === 'collapsed';
 
   return (
     <Sidebar collapsible="icon" className="border-r">
-      <SidebarHeader className="border-b p-4 h-20 flex justify-center">
+      <SidebarHeader className=" p-4 h-auto flex justify-center">
         {isCollapsed ? (
           // <LayoutDashboard className="size-4" />
-          <Image src="/images/logo.png" alt="Logo" width={40} height={40} />
+          <Image
+            src="/avatars/1.png"
+            alt="Logo"
+            width={100}
+            height={100}
+            className="rounded-full aspect-square object-cover"
+          />
         ) : (
-          <div className="flex gap-2 items-center">
-            <Image src="/images/logo.png" alt="Logo" width={40} height={40} />
-            <span className="text-xl font-semibold">
-              {kebabCaseToWords(pathname)}
-            </span>
+          <div className="flex flex-col gap-2 items-center">
+            <Image
+              className="rounded-full aspect-square object-cover"
+              src="/avatars/1.png"
+              alt="Logo"
+              width={100}
+              height={100}
+            />
+            <div className="w-full text-center font-semibold flex flex-col items-center">
+              <h3>Mulia Andiki</h3>
+              <p className="text-xs font-light">@DikzyCode</p>
+            </div>
+            <div className="w-full  flex justify-between">
+              <ThemeToggle />
+              <LanguageDropdown />
+            </div>
           </div>
         )}
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>My Classes</SidebarGroupLabel>
-          {/* <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => {
-                const isActive = pathname === item.url;
-                return (
-                  <SidebarMenuItem key={item.title}>
-                    <SidebarMenuButton asChild tooltip={isCollapsed ? item.title : undefined}>
-                      <Link
-                        href={item.url}
-                        className={cn(
-                          'flex items-center gap-3 rounded-lg px-3 py-2 text-gray-500 transition-all hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50 h-10',
-                          isActive && 'bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-50'
-                        )}
-                      >
-                        <item.icon className="h-6 w-6 lg:h-10 lg:w-10" />
-                        <span className="text-base lg:text-lg">{!isCollapsed && item.title}</span>
-                      </Link>
-                    </SidebarMenuButton>
-                  </SidebarMenuItem>
-                );
-              })}
-            </SidebarMenu>
-          </SidebarGroupContent> */}
+          <Separator />
+          <SidebarGroupContent>
+            <SidebarSection
+              isCollapsed={isCollapsed}
+              pathname={pathname}
+              items={SidebarMenuConfig}
+            />
+          </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>

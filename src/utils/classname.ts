@@ -10,26 +10,26 @@ export type ClassValue =
   | ClassArray;
 
 function toClassName(input: ClassValue): string {
-  if (!input) return "";
+  if (!input) return '';
 
-  if (typeof input === "string" || typeof input === "number") {
+  if (typeof input === 'string' || typeof input === 'number') {
     return String(input);
   }
 
   if (Array.isArray(input)) {
-    return input.map(toClassName).filter(Boolean).join(" ");
+    return input.map(toClassName).filter(Boolean).join(' ');
   }
 
-  if (typeof input === "object") {
+  if (typeof input === 'object') {
     return Object.entries(input)
       .filter(([, isEnabled]) => Boolean(isEnabled))
       .map(([className]) => className)
-      .join(" ");
+      .join(' ');
   }
 
-  return "";
+  return '';
 }
 
 export function cn(...inputs: ClassValue[]): string {
-  return inputs.map(toClassName).filter(Boolean).join(" ");
+  return inputs.map(toClassName).filter(Boolean).join(' ');
 }

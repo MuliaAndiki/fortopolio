@@ -1,18 +1,19 @@
-"use client";
+'use client';
 
 import {
+  type ButtonHTMLAttributes,
   cloneElement,
   createContext,
-  isValidElement,
-  type ButtonHTMLAttributes,
   type HTMLAttributes,
+  isValidElement,
   type MouseEvent,
   type ReactElement,
   type ReactNode,
   useContext,
   useState,
-} from "react";
-import { cn } from "@/utils/classname";
+} from 'react';
+
+import { cn } from '@/utils/classname';
 
 type DropdownMenuContextValue = {
   open: boolean;
@@ -21,27 +22,23 @@ type DropdownMenuContextValue = {
 
 type TriggerChildProps = {
   onClick?: (event: MouseEvent<HTMLElement>) => void;
-  "aria-expanded"?: boolean;
-  "aria-haspopup"?: string;
+  'aria-expanded'?: boolean;
+  'aria-haspopup'?: string;
 };
 
-const DropdownMenuContext = createContext<DropdownMenuContextValue | null>(
-  null,
-);
+const DropdownMenuContext = createContext<DropdownMenuContextValue | null>(null);
 
 function useDropdownMenuContext() {
   const context = useContext(DropdownMenuContext);
   if (!context) {
-    throw new Error(
-      "Dropdown menu components must be used inside DropdownMenu",
-    );
+    throw new Error('Dropdown menu components must be used inside DropdownMenu');
   }
   return context;
 }
 
 function mergeClickHandlers<E extends MouseEvent<HTMLElement>>(
   original?: (event: E) => void,
-  next?: (event: E) => void,
+  next?: (event: E) => void
 ) {
   return (event: E) => {
     original?.(event);
@@ -85,8 +82,8 @@ export function DropdownMenuTrigger({
     const child = children as ReactElement<TriggerChildProps>;
     return cloneElement(child, {
       onClick: mergeClickHandlers(child.props.onClick, handleClick),
-      "aria-expanded": open,
-      "aria-haspopup": "menu",
+      'aria-expanded': open,
+      'aria-haspopup': 'menu',
     });
   }
 
@@ -105,10 +102,7 @@ export function DropdownMenuTrigger({
 
 export type DropdownMenuContentProps = HTMLAttributes<HTMLDivElement>;
 
-export function DropdownMenuContent({
-  className,
-  ...props
-}: DropdownMenuContentProps) {
+export function DropdownMenuContent({ className, ...props }: DropdownMenuContentProps) {
   const { open } = useDropdownMenuContext();
 
   if (!open) return null;
@@ -117,8 +111,8 @@ export function DropdownMenuContent({
     <div
       role="menu"
       className={cn(
-        "absolute right-0 z-50 mt-2 min-w-44 rounded-md border border-slate-200 bg-white p-1 shadow-md",
-        className,
+        'absolute right-0 z-50 mt-2 min-w-44 rounded-md border border-slate-200 bg-white p-1 shadow-md',
+        className
       )}
       {...props}
     />
@@ -127,11 +121,7 @@ export function DropdownMenuContent({
 
 export type DropdownMenuItemProps = ButtonHTMLAttributes<HTMLButtonElement>;
 
-export function DropdownMenuItem({
-  className,
-  onClick,
-  ...props
-}: DropdownMenuItemProps) {
+export function DropdownMenuItem({ className, onClick, ...props }: DropdownMenuItemProps) {
   const { setOpen } = useDropdownMenuContext();
 
   return (
@@ -139,8 +129,8 @@ export function DropdownMenuItem({
       type="button"
       role="menuitem"
       className={cn(
-        "flex w-full items-center rounded-sm px-2 py-1.5 text-sm text-slate-700 transition-colors hover:bg-slate-100",
-        className,
+        'flex w-full items-center rounded-sm px-2 py-1.5 text-sm text-slate-700 transition-colors hover:bg-slate-100',
+        className
       )}
       onClick={(event) => {
         onClick?.(event);

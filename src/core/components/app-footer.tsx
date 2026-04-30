@@ -1,7 +1,8 @@
-import { appConfig } from "@/config/app.config";
-import Image from "next/image";
-import Link from "next/link";
-import { Icon } from "@iconify/react";
+import { Icon } from '@iconify/react';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { appConfig } from '@/config/app.config';
 
 export default function AppFooter() {
   return (
