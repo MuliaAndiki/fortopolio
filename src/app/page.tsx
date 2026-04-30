@@ -1,10 +1,10 @@
 import HeroSection from '@/components/pages/public/hero-section';
-import { SidebarLayout } from '@/core/layouts/sidebar.layout';
+import MainLayout from '@/core/layouts/Main.Layout';
 
 export default function Home() {
   return (
-    <SidebarLayout>
+    <MainLayout>
       <HeroSection />
-    </SidebarLayout>
+    </MainLayout>
   );
 }

@@ -1,5 +1,5 @@
 import AboutHeroSection from '@/components/pages/public/about/hero-section';
-import { SidebarLayout } from '@/core/layouts/sidebar.layout';
+import MainLayout from '@/core/layouts/Main.Layout';
 
 export default function About() {
   const raw = {
@@ -7,8 +7,8 @@ export default function About() {
     desc: 'Initial Screen About ',
   };
   return (
-    <SidebarLayout>
+    <MainLayout>
       <AboutHeroSection desc={raw.desc} title={raw.title} />
-    </SidebarLayout>
+    </MainLayout>
   );
 }

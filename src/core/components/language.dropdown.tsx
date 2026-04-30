@@ -2,13 +2,13 @@
 
 import { ChevronDown } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/atoms/button';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
+} from '@/components/atoms/dropdown-menu';
 import { getLanguageName, Language } from '@/config/i18n.config';
 
 import { useLanguage } from '../providers/languageProvider';

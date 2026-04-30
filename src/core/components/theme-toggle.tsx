@@ -2,7 +2,7 @@
 
 import { Icon } from '@iconify/react/dist/iconify.js';
 
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/atoms/button';
 import { useTheme } from '@/core/providers/theme.provider';
 
 export default function ThemeToggle() {

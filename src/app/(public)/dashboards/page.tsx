@@ -1,5 +1,5 @@
 import DashboardHeroSection from '@/components/pages/public/dashboard/hero-section';
-import { SidebarLayout } from '@/core/layouts/sidebar.layout';
+import MainLayout from '@/core/layouts/Main.Layout';
 
 export default function Dashboard() {
   const raw = {
@@ -7,8 +7,8 @@ export default function Dashboard() {
     desc: 'Dashboard Initial',
   };
   return (
-    <SidebarLayout>
+    <MainLayout>
       <DashboardHeroSection desc={raw.desc} title={raw.title} />
-    </SidebarLayout>
+    </MainLayout>
   );
 }

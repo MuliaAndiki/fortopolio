@@ -1,5 +1,5 @@
 import AchievementsHeroSection from '@/components/pages/public/achievements/hero-section';
-import { SidebarLayout } from '@/core/layouts/sidebar.layout';
+import MainLayout from '@/core/layouts/Main.Layout';
 
 export default function Achievements() {
   const raw = {
@@ -7,8 +7,8 @@ export default function Achievements() {
     desc: 'Initial Screen Achievements ',
   };
   return (
-    <SidebarLayout>
+    <MainLayout>
       <AchievementsHeroSection desc={raw.desc} title={raw.title} />
-    </SidebarLayout>
+    </MainLayout>
   );
 }

@@ -10,7 +10,7 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu';
+} from '@/components/atoms/navigation-menu';
 import { navigationMenuConfig } from '@/config/app.config';
 import { cn } from '@/utils/classname';
 
