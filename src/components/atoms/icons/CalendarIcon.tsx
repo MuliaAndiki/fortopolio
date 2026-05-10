@@ -1,11 +1,12 @@
-import { cn } from "@/utils/classname";
-import { IconProps } from "@/types/components/atoms/iconProps";
-import React from "react";
+import React from 'react';
+
+import { IconProps } from '@/types/components/atoms/iconProps';
+import { cn } from '@/utils/classname';
 
 const CalendarIcon: React.FC<IconProps> = ({ className }) => {
   return (
     <svg
-      className={cn("w-4 h-4", className)}
+      className={cn('w-4 h-4', className)}
       viewBox="0 0 20 20"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

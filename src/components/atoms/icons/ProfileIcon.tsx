@@ -1,6 +1,7 @@
-import { cn } from "@/utils/classname";
-import { IconProps } from "@/types/components/atoms/iconProps";
 import React from "react";
+
+import { IconProps } from "@/types/components/atoms/iconProps";
+import { cn } from "@/utils/classname";
 
 const ProfileIcon: React.FC<IconProps> = ({ className }) => {
   return (

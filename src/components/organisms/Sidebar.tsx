@@ -1,58 +1,50 @@
+'use client';
+
 import Link from 'next/link';
-import type { MouseEvent } from 'react';
+import { usePathname } from 'next/navigation';
 
-import { SidebarContentType } from '@/types/app/core-types';
-import { isActiveMenu, smoothScrolltoSection } from '@/utils';
+import { useSidebar } from '@/core/providers';
 
-interface SidebarSectionProps {
-  isCollapsed: boolean;
-  items: SidebarContentType[];
-  pathname: string;
-  onNavigate?: () => void;
-}
+const SidebarSection = () => {
+  const { isOpen } = useSidebar();
+  const pathname = usePathname();
 
-const SidebarSection: React.FC<SidebarSectionProps> = ({
-  isCollapsed,
-  items,
-  pathname,
-  onNavigate,
-}) => {
-  const handleItemClick = (event: MouseEvent<HTMLAnchorElement>, url: string) => {
-    if (url.startsWith('#')) {
-      event.preventDefault();
-      smoothScrolltoSection(url);
-    }
-    onNavigate?.();
-  };
+  const menuItems = [
+    { name: 'HOME', path: '/home' },
+    { name: 'ABOUT', path: '/about' },
+    { name: 'PROJECTS', path: '/projects' },
+    { name: 'ACHIEVEMENTS', path: '/achievements' },
+    { name: 'SMART TALKS', path: '/smart-talks' },
+    { name: 'DASHBOARDS', path: '/dashboards' },
+    { name: 'CHAT ROOM', path: '/chat-room' },
+    { name: 'CONTACTS', path: '/contacts' },
+  ];
+
+  if (!isOpen) return null;
 
   return (
-    <ul className="flex flex-col gap-2 px-5">
-      {items.map((item) => {
-        const isActive = isActiveMenu(item.url, pathname);
-        const IconComponent = item.icon;
-
-        return (
-          <li key={item.title} className="text-xs w-full">
+    <aside className="fixed left-0 top-16 h-[calc(100vh-64px)] w-64 bg-cyan-300 border-r-4 border-black p-6 overflow-y-auto z-40">
+      <nav className="space-y-3">
+        {menuItems.map((item) => {
+          const isActive = pathname === item.path || pathname.startsWith(item.path);
+          return (
             <Link
-              href={item.url}
-              onClick={(event) => handleItemClick(event, item.url)}
-              className={`flex items-center w-full gap-3 py-2.5 p-3 rounded-lg duration-200 transition-colors ${
+              key={item.path}
+              href={item.path}
+              className={`block px-4 py-3 font-black border-2 border-black transition-all ${
                 isActive
-                  ? 'text-neutral-01 bg-charcoal-green-lighter font-medium'
-                  : 'text-neutral-02 hover:bg-moss-stone/10'
+                  ? 'bg-black text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  : 'bg-white text-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
               }`}
             >
-              <IconComponent
-                className="w-5 h-5 lg:w-6 lg:h-6 flex-shrink-0"
-                variant={isActive ? 'filled' : 'outline'}
-              />
-              {!isCollapsed && <span className="text-sm font-medium">{item.title}</span>}
+              {item.name}
             </Link>
-          </li>
-        );
-      })}
-    </ul>
+          );
+        })}
+      </nav>
+    </aside>
   );
 };
 
 export default SidebarSection;
+export { SidebarSection };

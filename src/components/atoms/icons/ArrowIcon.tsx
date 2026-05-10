@@ -1,13 +1,9 @@
-import { cn } from "@/utils/classname";
-import { IconProps } from "@/types/components/atoms/iconProps";
+import { IconProps } from '@/types/components/atoms/iconProps';
+import { cn } from '@/utils/classname';
 
 const ArrowIcon: React.FC<IconProps> = ({ className }) => {
   return (
-    <svg
-      className={cn("w-4 h-4", className)}
-      viewBox="0 0 18 18"
-      fill="none"
-    >
+    <svg className={cn('w-4 h-4', className)} viewBox="0 0 18 18" fill="none">
       <path
         fillRule="evenodd"
         clipRule="evenodd"

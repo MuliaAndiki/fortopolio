@@ -1,99 +1,75 @@
 'use client';
 
-import { useSidebar } from '@/core/providers';
-import ChevronSquareIcon from '../atoms/icons/ChevronSquareIcon';
-import NotificationIcon from '../atoms/icons/NotificationIcon';
-// import { resolveTopbarTitle } from "@/constant/topbarTitle";
-import Image from 'next/image';
 import Link from 'next/link';
-import { useState, useEffect, useMemo } from 'react';
-import { useParams, usePathname } from 'next/navigation';
+import { usePathname } from 'next/navigation';
+import { useEffect,useState } from 'react';
+
+import { useSidebar } from '@/core/providers';
 
 const Topbar = () => {
-  const { isOpen, isMobile, toggle } = useSidebar();
+  const { isOpen, toggle } = useSidebar();
   const pathname = usePathname();
-  const params = useParams();
   const [currentDate, setCurrentDate] = useState('');
 
-  //   const topbarTitle = useMemo(
-  //     () =>
-  //       resolveTopbarTitle({
-  //         pathname,
-  //         slugParam: params?.slug,
-  //       }),
-  //     [params?.slug, pathname],
-  //   );
-
   useEffect(() => {
-    // Update date immediately
+    const updateDate = () => {
+      const now = new Date();
+      const options: Intl.DateTimeFormatOptions = {
+        weekday: 'short',
+        month: 'short',
+        day: 'numeric',
+      };
+      const formattedDate = now.toLocaleDateString('id-ID', options);
+      setCurrentDate(formattedDate);
+    };
+
     updateDate();
-
-    // Update date every minute
     const interval = setInterval(updateDate, 60000);
-
     return () => clearInterval(interval);
   }, []);
 
-  const updateDate = () => {
-    const now = new Date();
-    const options: Intl.DateTimeFormatOptions = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    };
-    const formattedDate = now.toLocaleDateString('id-ID', options);
-    setCurrentDate(formattedDate);
-  };
+  const pages = [
+    { name: 'HOME', path: '/home' },
+    { name: 'ABOUT', path: '/about' },
+    { name: 'PROJECTS', path: '/projects' },
+    { name: 'ACHIEVEMENTS', path: '/achievements' },
+  ];
 
   return (
-    <div className="w-full flex h-16 lg:h-20 fixed inset-0 bg-neutral-01 border-b border-grey-stroke z-50">
-      {/* Logo Section - Responsive */}
-      <div
-        className={` border-grey-stroke flex p-3 lg:p-5 items-center transition-[width] duration-300 ${
-          isOpen && !isMobile
-            ? 'w-sidebar-width justify-between'
-            : 'w-14 lg:w-[4.2rem] justify-center lg:justify-end'
-        }`}
-      >
-        {/* Logo - hidden on mobile when sidebar closed */}
-        <div
-          className={`transition-opacity duration-300 ${isOpen && !isMobile ? 'flex' : 'hidden'}`}
-        >
-          {/* logo */}
-        </div>
-        <button onClick={toggle} aria-label="Toggle sidebar" className="p-1">
-          <ChevronSquareIcon
-            variant="filled"
-            className={`w-6 h-6 lg:w-8 lg:h-8 text-neutral-02 transition-transform duration-300 ease-in-out ${
-              !isOpen && 'rotate-180'
-            }`}
-          />
-        </button>
-      </div>
+    <div className="w-full h-16 fixed top-0 z-50 bg-yellow-300 border-b-4 border-black flex items-center px-4 md:px-8">
+      <div className="max-w-7xl w-full mx-auto flex justify-between items-center">
+        {/* Logo/Brand */}
+        <Link href="/home" className="font-black text-2xl text-black hover:text-gray-800 transition">
+          MA
+        </Link>
 
-      {/* Main Topbar Content */}
-      <div className="px-3 lg:px-5 flex flex-1 h-full items-center gap-2 lg:gap-4 justify-between  min-w-0">
-        <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-semibold text-neutral-02 lg:text-base">
-            {/* {topbarTitle} */}
-          </p>
+        {/* Desktop Navigation */}
+        <div className="hidden md:flex gap-2">
+          {pages.map((page) => (
+            <Link
+              key={page.path}
+              href={page.path}
+              className={`px-4 py-2 font-bold border-2 border-black transition-all ${
+                pathname === page.path
+                  ? 'bg-black text-white shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+                  : 'bg-white text-black hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)]'
+              }`}
+            >
+              {page.name}
+            </Link>
+          ))}
         </div>
-        {/* Search Bar - Hidden on small mobile, visible on sm+ */}
-        {/* <div className="hidden sm:flex flex-1 justify-end max-w-md">
-          <SearchBar />
-        </div> */}
 
-        {/* <Image
-          src="/avatars/1.png"
-          alt="User avatar"
-          width={210}
-          height={210}
-          className="w-12 h-12 lg:w-[50px] lg:h-[50px] rounded-full object-cover"
-        /> */}
-        <p className="truncate text-[11px] text-grey lg:text-xs capitalize ">
-          {currentDate || 'Memuat tanggal...'}
-        </p>
+        {/* Date and Toggle */}
+        <div className="flex items-center gap-4">
+          <p className="hidden sm:block text-xs font-black text-black">{currentDate}</p>
+          <button
+            onClick={toggle}
+            className="font-bold border-2 border-black bg-white text-black px-4 py-2 hover:shadow-[2px_2px_0px_0px_rgba(0,0,0,1)] transition-all md:hidden"
+          >
+            ☰
+          </button>
+        </div>
       </div>
     </div>
   );

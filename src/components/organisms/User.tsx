@@ -1,6 +1,7 @@
+import Image from 'next/image';
+
 import LanguageDropdown from '@/core/components/language.dropdown';
 import ThemeToggle from '@/core/components/theme-toggle';
-import Image from 'next/image';
 export default function User() {
   return (
     <div className="flex flex-col gap-2 items-center">

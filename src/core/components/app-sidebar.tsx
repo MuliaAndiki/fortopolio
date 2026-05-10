@@ -2,12 +2,13 @@
 
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+
 import { Separator } from '@/components/atoms/separator';
+import CopyRight from '@/components/organisms/CopyRight';
 import { useSidebar } from '@/core/providers/sidebarProvinder';
 
 import LanguageDropdown from './language.dropdown';
 import ThemeToggle from './theme-toggle';
-import CopyRight from '@/components/organisms/CopyRight';
 
 export function AppSidebar() {
   const pathname = usePathname();

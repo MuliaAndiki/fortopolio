@@ -1,9 +1,10 @@
 'use client';
 
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import NextTopLoader from 'nextjs-toploader';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import NextTopLoader from 'nextjs-toploader';
+
 import { Toaster } from '@/components';
 import { LanguageProvider } from '@/core';
 import { LenisProvider } from '@/core';
