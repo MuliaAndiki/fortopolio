@@ -11,108 +11,98 @@ interface SmartTalkHeroSectionProps {
 const SmartTalkHeroSection: React.FC<SmartTalkHeroSectionProps> = ({ desc, title }) => {
   const articles = [
     {
-      title: 'Building Brutal UIs with Tailwind CSS',
-      excerpt: 'A deep dive into creating hard-edged, bold interfaces using utility-first CSS',
-      category: 'TECH',
-      date: 'Mar 15, 2024',
-      bg: 'bg-yellow-300',
-      readTime: '8 min read',
-    },
-    {
-      title: 'Workplace Diplomacy in Tech Teams',
-      excerpt: 'Navigating conflicts and building strong relationships in engineering teams',
-      category: 'SOFT SKILLS',
-      date: 'Mar 10, 2024',
-      bg: 'bg-pink-400',
-      readTime: '6 min read',
-    },
-    {
-      title: 'Silent Deep Work: The Art of Focus',
-      excerpt: 'How to achieve flow state and maximize productivity in a noisy world',
-      category: 'PRODUCTIVITY',
-      date: 'Mar 5, 2024',
-      bg: 'bg-cyan-300',
-      readTime: '10 min read',
-    },
-    {
-      title: 'Next.js 15 Performance Tips',
-      excerpt: 'Optimization techniques that will make your Next.js applications lightning fast',
-      category: 'TECH',
-      date: 'Feb 28, 2024',
-      bg: 'bg-lime-400',
+      title: 'English Learning Roadmap for Engineers',
+      excerpt: 'How to transition from technical proficiency to global communication excellence.',
+      category: 'CAREER',
+      date: 'MAY 10, 2026',
+      bg: 'bg-neo-yellow',
       readTime: '12 min read',
     },
     {
-      title: 'Design Systems at Scale',
-      excerpt: 'Creating and maintaining design systems for enterprise applications',
-      category: 'DESIGN',
-      date: 'Feb 20, 2024',
-      bg: 'bg-orange-400',
-      readTime: '9 min read',
+      title: 'Workplace Diplomacy',
+      excerpt: 'The unspoken rules of navigating complex engineering environments with grace.',
+      category: 'SOFT SKILLS',
+      date: 'APR 24, 2026',
+      bg: 'bg-neo-pink',
+      readTime: '8 min read',
     },
     {
-      title: 'The Psychology of Good UX',
-      excerpt: 'Understanding user behavior to create more intuitive interfaces',
-      category: 'UX',
-      date: 'Feb 12, 2024',
-      bg: 'bg-blue-400',
-      readTime: '7 min read',
+      title: 'Silent Deep Work',
+      excerpt: 'Strategies for achieving high-output focus sessions in an age of distraction.',
+      category: 'PRODUCTIVITY',
+      date: 'APR 12, 2026',
+      bg: 'bg-neo-cyan',
+      readTime: '10 min read',
+    },
+    {
+      title: 'Implementing YOLOv8 in Web Apps',
+      excerpt: 'A technical guide to integrating real-time object detection using TensorFlow.js.',
+      category: 'TECH',
+      date: 'MAR 30, 2026',
+      bg: 'bg-neo-green',
+      readTime: '15 min read',
     },
   ];
 
   return (
-    <section className="w-full min-h-screen bg-white p-4 md:p-8 py-12 md:py-16">
+    <section className="w-full min-h-screen bg-neo-white p-4 md:p-8 pt-24 pb-16">
       <div className="max-w-4xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-5xl md:text-7xl font-black text-black mb-4">{title}</h1>
-          <p className="text-xl font-bold text-black">{desc}</p>
+        <div className="mb-16">
+          <h1 className="text-6xl md:text-9xl font-black text-neo-black mb-4 uppercase leading-none italic">
+            {title}
+          </h1>
+          <p className="text-xl md:text-2xl font-bold text-neo-black max-w-2xl bg-neo-green neo-border-sm p-4 neo-shadow-sm inline-block">
+            {desc}
+          </p>
         </div>
 
         {/* Articles Feed */}
-        <div className="space-y-6">
+        <div className="space-y-10">
           {articles.map((article, idx) => (
             <NeoCard
               key={idx}
               shadow="lg"
-              className={`${article.bg} p-6 md:p-8 hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer`}
+              className={`${article.bg} p-8 md:p-10 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer group`}
             >
-              <div className="flex flex-col md:flex-row justify-between md:items-start gap-4 mb-4">
-                <div className="flex-1">
-                  <div className="flex gap-2 mb-3 flex-wrap">
-                    <span className="bg-white text-black px-3 py-1 text-xs font-black border-2 border-black">
-                      {article.category}
-                    </span>
-                    <span className="text-sm font-bold text-black">{article.readTime}</span>
-                  </div>
-                  <h3 className="text-3xl font-black text-black mb-2">{article.title}</h3>
-                  <p className="text-base font-semibold text-black mb-4">{article.excerpt}</p>
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-4">
+                  <span className="bg-neo-black text-neo-white px-3 py-1 text-xs font-black uppercase tracking-widest">
+                    {article.category}
+                  </span>
+                  <span className="text-xs font-black text-neo-black uppercase">{article.readTime}</span>
                 </div>
-              </div>
+                
+                <h3 className="text-4xl md:text-5xl font-black text-neo-black uppercase leading-none group-hover:underline decoration-4">
+                  {article.title}
+                </h3>
+                
+                <p className="text-lg md:text-xl font-bold text-neo-black leading-tight max-w-2xl">
+                  {article.excerpt}
+                </p>
 
-              <div className="flex justify-between items-center">
-                <p className="text-sm font-bold text-gray-700">{article.date}</p>
-                <NeoButton variant="info" size="sm">
-                  READ MORE
-                </NeoButton>
+                <div className="flex justify-between items-end mt-4 pt-6 border-t-4 border-neo-black/20">
+                  <p className="text-sm font-black text-neo-black uppercase italic">{article.date}</p>
+                  <div className="text-4xl group-hover:translate-x-2 transition-transform">→</div>
+                </div>
               </div>
             </NeoCard>
           ))}
         </div>
 
-        {/* Newsletter CTA */}
-        <div className="mt-16 pt-12 border-t-4 border-black">
-          <NeoCard shadow="xl" className="p-8 md:p-12 bg-yellow-300">
-            <h2 className="text-4xl font-black text-black mb-4">SUBSCRIBE TO INSIGHTS</h2>
-            <p className="text-lg font-bold text-black mb-6">Get weekly articles on tech, UX, and career growth</p>
-            <div className="flex flex-col sm:flex-row gap-4">
+        {/* Guestbook CTA */}
+        <div className="mt-24 pt-16 border-t-8 border-neo-black">
+          <NeoCard shadow="xl" className="p-10 md:p-16 bg-neo-blue text-neo-white">
+            <h2 className="text-5xl md:text-6xl font-black mb-6 uppercase leading-none italic">JOIN THE DIALOGUE</h2>
+            <p className="text-xl font-bold mb-8 max-w-xl">Drop your email to get notified when new artifacts are published.</p>
+            <div className="flex flex-col sm:flex-row gap-6">
               <input
                 type="email"
-                placeholder="your@email.com"
-                className="flex-1 px-4 py-3 border-2 border-black font-bold focus:outline-none focus:ring-4 focus:ring-black"
+                placeholder="YOUR_EMAIL@VOXEL.NET"
+                className="flex-1 px-6 py-4 border-4 border-neo-black bg-neo-white text-neo-black font-black uppercase focus:outline-none focus:bg-neo-yellow transition-colors placeholder:text-neo-black/40"
               />
-              <NeoButton variant="destructive" size="md">
-                SUBSCRIBE
+              <NeoButton variant="primary" size="lg" className="bg-neo-white text-neo-black hover:bg-neo-green border-4">
+                TRANSMIT
               </NeoButton>
             </div>
           </NeoCard>
@@ -120,6 +110,7 @@ const SmartTalkHeroSection: React.FC<SmartTalkHeroSectionProps> = ({ desc, title
       </div>
     </section>
   );
+
 };
 
 export default SmartTalkHeroSection;

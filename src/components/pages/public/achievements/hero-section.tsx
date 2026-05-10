@@ -11,116 +11,111 @@ interface Props {
 const AchievementsHeroSection: React.FC<Props> = ({ title = 'Achievements', desc = '' }) => {
   const achievements = [
     {
+      badge: '🍎',
+      title: 'APPLE ACADEMY 2027 CANDIDATE',
+      description: 'Currently building a high-impact portfolio for the 2027 cohort application.',
+      year: 'TARGET: JUNE 2026',
+      bg: 'bg-neo-pink',
+    },
+    {
+      badge: '🏛️',
+      title: '6th SEMESTER CS STUDENT',
+      description: 'Active university student focusing on Software Engineering and AI.',
+      year: '2023-PRESENT',
+      bg: 'bg-neo-blue',
+      textColor: 'text-neo-white',
+    },
+    {
+      badge: '🧪',
+      title: 'NATURAL SCIENCES BACKGROUND',
+      description: 'Strong foundation in analytical thinking and problem solving from IPA background.',
+      year: '2020-2023',
+      bg: 'bg-neo-green',
+    },
+    {
       badge: '🏆',
-      title: 'Hackathon Winner',
-      description: 'Won first place at National Web Development Hackathon 2023',
-      year: '2023',
-      bg: 'bg-yellow-300',
-    },
-    {
-      badge: '📚',
-      title: 'Computer Science Degree',
-      description: 'Graduated with honors from State University',
-      year: '2021',
-      bg: 'bg-cyan-300',
-    },
-    {
-      badge: '⭐',
-      title: 'Open Source Contributor',
-      description: 'Active contributor to 10+ open-source projects',
-      year: '2022-2024',
-      bg: 'bg-lime-400',
-    },
-    {
-      badge: '🎯',
-      title: 'Apple Developer Academy 2027',
-      description: 'Applying for the prestigious Apple Developer Academy cohort',
-      year: '2025-2027',
-      bg: 'bg-pink-400',
-    },
-    {
-      badge: '🚀',
-      title: 'Tech Speaker',
-      description: 'Spoken at 5+ tech conferences about UI/UX design',
-      year: '2023-2024',
-      bg: 'bg-orange-400',
-    },
-    {
-      badge: '💼',
-      title: 'Senior Developer Role',
-      description: 'Promoted to Senior Frontend Developer at Tech Corp',
+      title: 'HACKATHON FINALIST',
+      description: 'Developed innovative solutions for environmental monitoring using real-time data.',
       year: '2024',
-      bg: 'bg-blue-400',
+      bg: 'bg-neo-yellow',
     },
   ];
 
   return (
-    <section className="w-full min-h-screen bg-white p-4 md:p-8 py-12 md:py-16">
+    <section className="w-full min-h-screen bg-neo-white p-4 md:p-8 pt-24 pb-16">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-5xl md:text-7xl font-black text-black mb-4">{title}</h1>
-          <p className="text-xl font-bold text-black">{desc}</p>
+        <div className="mb-16">
+          <h1 className="text-6xl md:text-9xl font-black text-neo-black mb-4 uppercase leading-none">
+            {title}
+          </h1>
+          <p className="text-xl md:text-2xl font-bold text-neo-black max-w-3xl border-l-8 border-neo-black pl-6">
+            {desc}
+          </p>
         </div>
 
         {/* Timeline/Badge Board */}
-        <div className="space-y-6">
+        <div className="space-y-12">
           {achievements.map((achievement, idx) => (
-            <div key={idx} className="flex gap-4 md:gap-8 items-start">
+            <div key={idx} className="flex gap-6 md:gap-12 items-stretch group">
               {/* Timeline Connector */}
-              <div className="flex flex-col items-center pt-2">
-                <NeoCard
-                  shadow="none"
-                  className="w-16 h-16 flex items-center justify-center text-4xl border-4 border-black"
-                >
+              <div className="flex flex-col items-center">
+                <div className="w-20 h-20 flex items-center justify-center text-5xl bg-neo-white neo-border neo-shadow-sm group-hover:neo-shadow transition-all group-hover:bg-neo-yellow">
                   {achievement.badge}
-                </NeoCard>
+                </div>
                 {idx < achievements.length - 1 && (
-                  <div className="w-1 h-16 bg-black my-2"></div>
+                  <div className="flex-1 w-2 bg-neo-black my-4"></div>
                 )}
               </div>
 
               {/* Achievement Card */}
               <NeoCard
                 shadow="lg"
-                className={`${achievement.bg} p-6 md:p-8 flex-1 hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all`}
+                className={`${achievement.bg} ${achievement.textColor || 'text-neo-black'} p-8 md:p-10 flex-1 hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all`}
               >
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-start mb-6">
                   <div>
-                    <h3 className="text-2xl font-black text-black">{achievement.title}</h3>
-                    <p className="text-sm font-bold text-gray-700 mt-1">{achievement.year}</p>
+                    <h3 className="text-3xl md:text-4xl font-black uppercase leading-tight">
+                      {achievement.title}
+                    </h3>
+                    <p className="text-sm font-black mt-2 opacity-80 bg-neo-black text-neo-white inline-block px-2 py-1">
+                      {achievement.year}
+                    </p>
                   </div>
                 </div>
-                <p className="text-base font-semibold text-black">{achievement.description}</p>
+                <p className="text-lg md:text-xl font-bold leading-relaxed max-w-2xl">
+                  {achievement.description}
+                </p>
               </NeoCard>
             </div>
           ))}
         </div>
 
         {/* Roadmap Section */}
-        <div className="mt-16 pt-12 border-t-4 border-black">
-          <h2 className="text-4xl font-black text-black mb-8">2025 ROADMAP</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <NeoCard shadow="lg" className="p-8 bg-cyan-300">
-              <p className="text-sm font-bold text-black mb-2">Q1</p>
-              <p className="text-2xl font-black text-black">MASTER NEXT.JS 15</p>
-              <p className="text-sm font-semibold text-black mt-4">Deep dive into new features and performance optimizations</p>
+        <div className="mt-24 pt-16 border-t-8 border-neo-black">
+          <h2 className="text-5xl md:text-6xl font-black text-neo-black mb-12 uppercase italic">MISSION LOG</h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <NeoCard shadow="lg" className="p-8 bg-neo-cyan">
+              <p className="text-sm font-black text-neo-black mb-4 uppercase">Phase 01: Portfolio</p>
+              <p className="text-2xl font-black text-neo-black mb-4 leading-none">CORE ARTIFACTS ASSEMBLY</p>
+              <p className="text-sm font-bold text-neo-black/80">Finalizing AERIS and MORA integration by Q1 2026.</p>
             </NeoCard>
-            <NeoCard shadow="lg" className="p-8 bg-lime-400">
-              <p className="text-sm font-bold text-black mb-2">Q2-Q3</p>
-              <p className="text-2xl font-black text-black">APPLE ACADEMY</p>
-              <p className="text-sm font-semibold text-black mt-4">Apply and prepare for the prestigious developer program</p>
+            <NeoCard shadow="lg" className="p-8 bg-neo-green">
+              <p className="text-sm font-black text-neo-black mb-4 uppercase">Phase 02: Application</p>
+              <p className="text-2xl font-black text-neo-black mb-4 leading-none">APPLE ACADEMY TARGET</p>
+              <p className="text-sm font-bold text-neo-black/80">Submission window open: June 2026. Objective: Acceptance.</p>
             </NeoCard>
-            <NeoCard shadow="lg" className="p-8 bg-pink-400">
-              <p className="text-sm font-bold text-black mb-2">Q4</p>
-              <p className="text-2xl font-black text-black">LAUNCH STARTUP</p>
-              <p className="text-sm font-semibold text-black mt-4">Build and launch my own SaaS product</p>
+            <NeoCard shadow="lg" className="p-8 bg-neo-orange">
+              <p className="text-sm font-black text-neo-black mb-4 uppercase">Phase 03: Specialization</p>
+              <p className="text-2xl font-black text-neo-black mb-4 leading-none">AI & 3D INTEGRATION</p>
+              <p className="text-sm font-bold text-neo-black/80">Scaling NutriPlate with YOLOv8 optimization.</p>
             </NeoCard>
           </div>
         </div>
       </div>
     </section>
   );
+
 };
 
 export default AchievementsHeroSection;

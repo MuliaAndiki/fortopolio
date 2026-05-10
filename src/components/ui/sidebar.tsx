@@ -35,10 +35,11 @@ export const Sidebar = () => {
       )}
 
       <div
-        className={`fixed top-0 left-0 h-screen w-64 bg-cyan-300 border-r-4 border-black text-black pt-20 transition-transform duration-300 ease-in-out z-50 ${
+        className={`fixed top-0 left-0 h-screen w-sidebar-width bg-neo-cyan border-r-8 border-neo-black text-neo-black pt-topbar-height transition-transform duration-300 ease-in-out z-50 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
+
         {isMobile && (
           <button
             onClick={close}

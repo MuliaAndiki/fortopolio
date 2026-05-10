@@ -33,111 +33,105 @@ const ContactHeroSection: React.FC<Props> = ({ title = 'Get In Touch', desc = ''
 
   const socialLinks = [
     {
-      name: 'GitHub',
-      emoji: '🐙',
-      url: 'https://github.com',
-      bg: 'bg-yellow-300',
-      desc: 'Check out my code',
+      name: 'GITHUB',
+      emoji: '⌨️',
+      url: 'https://github.com/muliaandiki',
+      bg: 'bg-neo-yellow',
+      desc: 'SOURCE_CODE_REPOS',
     },
     {
-      name: 'LinkedIn',
-      emoji: '💼',
-      url: 'https://linkedin.com',
-      bg: 'bg-cyan-300',
-      desc: 'Connect with me',
+      name: 'LINKEDIN',
+      emoji: '👔',
+      url: 'https://linkedin.com/in/muliaandiki',
+      bg: 'bg-neo-blue',
+      textColor: 'text-neo-white',
+      desc: 'PROFESSIONAL_NETWORK',
     },
     {
-      name: 'Email',
-      emoji: '✉️',
-      url: 'mailto:hello@muliaandiki.com',
-      bg: 'bg-pink-400',
-      desc: 'Send me a message',
+      name: 'EMAIL',
+      emoji: '📧',
+      url: 'mailto:muliaandiki@proton.me',
+      bg: 'bg-neo-pink',
+      desc: 'DIRECT_TRANSMISSION',
     },
   ];
 
   return (
-    <section className="w-full min-h-screen bg-lime-400 p-4 md:p-8 py-12 md:py-16">
-      <div className="max-w-5xl mx-auto">
+    <section className="w-full min-h-screen bg-neo-green p-4 md:p-8 pt-24 pb-16">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-5xl md:text-7xl font-black text-black mb-4">{title}</h1>
-          <p className="text-xl font-bold text-black">{desc || 'Let\'s collaborate on something amazing'}</p>
+        <div className="mb-16 border-b-8 border-neo-black pb-8">
+          <h1 className="text-6xl md:text-9xl font-black text-neo-black mb-4 uppercase leading-none italic">
+            {title}
+          </h1>
+          <p className="text-xl md:text-2xl font-bold text-neo-black max-w-3xl">
+            {desc}
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
+        <div className="grid lg:grid-cols-3 gap-12 items-start">
           {/* Contact Form */}
-          <div className="md:col-span-2">
-            <NeoCard shadow="xl" className="p-8 md:p-12 bg-white">
-              <h2 className="text-3xl font-black text-black mb-8">SEND ME A MESSAGE</h2>
+          <div className="lg:col-span-2">
+            <NeoCard shadow="lg" className="p-10 md:p-16 bg-neo-white border-neo-black">
+              <h2 className="text-4xl font-black text-neo-black mb-10 uppercase border-b-4 border-neo-black pb-2 inline-block leading-none">
+                ENCRYPTED_MESSAGE
+              </h2>
 
-              <div className="space-y-6">
+              <div className="space-y-10">
                 {/* Name */}
-                <div>
-                  <label className="text-sm font-black text-black block mb-2">NAME</label>
+                <div className="group">
+                  <label className="text-xs font-black text-neo-black block mb-2 uppercase tracking-widest">SENDER_NAME</label>
                   <input
                     type="text"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="Your full name"
-                    className="w-full px-4 py-3 border-4 border-black font-bold focus:outline-none focus:ring-4 focus:ring-yellow-300 bg-gray-50"
+                    placeholder="ENTER_NAME_IDENTIFIER"
+                    className="w-full px-6 py-5 border-[6px] border-neo-black font-black text-xl focus:outline-none focus:bg-neo-yellow transition-colors placeholder:text-neo-black/20 uppercase"
                   />
                 </div>
 
                 {/* Email */}
-                <div>
-                  <label className="text-sm font-black text-black block mb-2">EMAIL</label>
+                <div className="group">
+                  <label className="text-xs font-black text-neo-black block mb-2 uppercase tracking-widest">SENDER_EMAIL</label>
                   <input
                     type="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="your@email.com"
-                    className="w-full px-4 py-3 border-4 border-black font-bold focus:outline-none focus:ring-4 focus:ring-yellow-300 bg-gray-50"
-                  />
-                </div>
-
-                {/* Subject */}
-                <div>
-                  <label className="text-sm font-black text-black block mb-2">SUBJECT</label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    placeholder="What is this about?"
-                    className="w-full px-4 py-3 border-4 border-black font-bold focus:outline-none focus:ring-4 focus:ring-yellow-300 bg-gray-50"
+                    placeholder="EMAIL@ENDPOINT.COM"
+                    className="w-full px-6 py-5 border-[6px] border-neo-black font-black text-xl focus:outline-none focus:bg-neo-cyan transition-colors placeholder:text-neo-black/20 uppercase"
                   />
                 </div>
 
                 {/* Message */}
-                <div>
-                  <label className="text-sm font-black text-black block mb-2">MESSAGE</label>
+                <div className="group">
+                  <label className="text-xs font-black text-neo-black block mb-2 uppercase tracking-widest">TRANSMISSION_CONTENT</label>
                   <textarea
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell me everything..."
+                    placeholder="DESCRIBE_COLLABORATION_DETAILS..."
                     rows={6}
-                    className="w-full px-4 py-3 border-4 border-black font-bold focus:outline-none focus:ring-4 focus:ring-yellow-300 bg-gray-50 resize-none"
+                    className="w-full px-6 py-5 border-[6px] border-neo-black font-black text-xl focus:outline-none focus:bg-neo-pink transition-colors placeholder:text-neo-black/20 resize-none uppercase"
                   ></textarea>
                 </div>
 
                 <NeoButton
-                  variant="destructive"
+                  variant="primary"
                   size="lg"
                   onClick={handleSubmit}
-                  className="w-full"
+                  className="w-full bg-neo-black text-neo-white py-8 text-3xl font-black uppercase italic hover:bg-neo-yellow hover:text-neo-black border-4"
                 >
-                  SEND MESSAGE
+                  SEND TRANSMISSION
                 </NeoButton>
               </div>
             </NeoCard>
           </div>
 
-          {/* Social Links - Sticky Note Style */}
-          <div className="space-y-6">
-            <h2 className="text-3xl font-black text-black">ALSO FIND ME ON</h2>
+          {/* Sticky Notes */}
+          <div className="space-y-8 lg:sticky lg:top-28">
+            <h2 className="text-4xl font-black text-neo-black uppercase italic">DIRECT_LINKS</h2>
 
             {socialLinks.map((link) => (
               <a
@@ -145,48 +139,29 @@ const ContactHeroSection: React.FC<Props> = ({ title = 'Get In Touch', desc = ''
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="block group"
               >
                 <NeoCard
                   shadow="lg"
-                  className={`${link.bg} p-6 text-center hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer transform hover:-rotate-1`}
+                  className={`${link.bg} ${link.textColor || 'text-neo-black'} p-8 text-center hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer transform group-hover:-rotate-3`}
                 >
-                  <p className="text-5xl mb-3">{link.emoji}</p>
-                  <h3 className="text-2xl font-black text-black mb-2">{link.name}</h3>
-                  <p className="text-sm font-bold text-black">{link.desc}</p>
+                  <p className="text-6xl mb-4 group-hover:scale-125 transition-transform">{link.emoji}</p>
+                  <h3 className="text-3xl font-black mb-2 uppercase">{link.name}</h3>
+                  <p className="text-xs font-black opacity-60 uppercase tracking-widest">{link.desc}</p>
                 </NeoCard>
               </a>
             ))}
-          </div>
-        </div>
 
-        {/* Quick Info */}
-        <NeoCard shadow="lg" className="p-8 bg-white">
-          <h2 className="text-3xl font-black text-black mb-6">QUICK INFO</h2>
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="border-r-4 border-black pr-6">
-              <p className="text-sm font-bold text-gray-600 mb-2">EMAIL</p>
-              <p className="text-lg font-black text-black">hello@muliaandiki.com</p>
-            </div>
-            <div className="border-r-4 border-black pr-6">
-              <p className="text-sm font-bold text-gray-600 mb-2">PHONE</p>
-              <p className="text-lg font-black text-black">+62 821 1234 5678</p>
-            </div>
-            <div>
-              <p className="text-sm font-bold text-gray-600 mb-2">TIMEZONE</p>
-              <p className="text-lg font-black text-black">WIB (UTC+7)</p>
-            </div>
+            <NeoCard shadow="md" className="p-8 bg-neo-white text-center">
+              <p className="text-xs font-black text-neo-black/40 uppercase tracking-widest mb-2">AVAILABILITY</p>
+              <p className="text-2xl font-black text-neo-black leading-none">MON-FRI: 09:00 - 17:00 WIB</p>
+            </NeoCard>
           </div>
-        </NeoCard>
-
-        {/* Response Time */}
-        <div className="mt-8 text-center">
-          <NeoCard shadow="md" className="inline-block px-8 py-4 bg-yellow-300">
-            <p className="text-base font-black text-black">⚡ USUALLY REPLIES WITHIN 24 HOURS ⚡</p>
-          </NeoCard>
         </div>
       </div>
     </section>
   );
+
 };
 
 export default ContactHeroSection;

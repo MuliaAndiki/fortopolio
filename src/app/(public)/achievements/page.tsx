@@ -2,13 +2,14 @@ import AchievementsHeroSection from '@/components/pages/public/achievements/hero
 import MainLayout from '@/core/layouts/Main.Layout';
 
 export default function Achievements() {
-  const raw = {
-    title: 'Achievements Screen',
-    desc: 'Initial Screen Achievements ',
+  const data = {
+    title: 'MILESTONES',
+    desc: 'Tracing the journey from Natural Sciences to Software Engineering excellence.',
   };
   return (
     <MainLayout>
-      <AchievementsHeroSection desc={raw.desc} title={raw.title} />
+      <AchievementsHeroSection desc={data.desc} title={data.title} />
     </MainLayout>
   );
 }
+

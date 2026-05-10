@@ -10,120 +10,143 @@ interface Props {
 
 const DashboardHeroSection: React.FC<Props> = ({ title = 'My Analytics', desc = '' }) => {
   const stats = [
-    { label: 'GitHub Commits', value: '2,847', unit: 'this year', bg: 'bg-yellow-300' },
-    { label: 'Coding Hours', value: '1,256', unit: 'waka-time', bg: 'bg-pink-400' },
-    { label: 'Projects Built', value: '45', unit: 'completed', bg: 'bg-cyan-300' },
-    { label: 'Lines of Code', value: '1.2M', unit: 'written', bg: 'bg-lime-400' },
+    { label: 'GITHUB COMMITS', value: '1,422', unit: 'THIS YEAR', bg: 'bg-neo-yellow' },
+    { label: 'CODING HOURS', value: '840+', unit: 'WAKA-TIME', bg: 'bg-neo-pink' },
+    { label: 'ACTIVE PROJECTS', value: '4', unit: 'IN PRODUCTION', bg: 'bg-neo-cyan' },
+    { label: 'UPTIME', value: '99.9%', unit: 'STABLE', bg: 'bg-neo-green' },
   ];
 
   const skills = [
-    { name: 'React', level: 95 },
-    { name: 'Next.js', level: 93 },
-    { name: 'Tailwind CSS', level: 97 },
-    { name: 'TypeScript', level: 90 },
-    { name: 'UI/UX Design', level: 92 },
-    { name: 'Performance', level: 85 },
+    { name: 'NEXT.JS', level: 95, color: 'bg-neo-yellow' },
+    { name: 'REACT', level: 93, color: 'bg-neo-cyan' },
+    { name: 'TAILWIND', level: 98, color: 'bg-neo-pink' },
+    { name: 'BUN/ELYSIA', level: 85, color: 'bg-neo-green' },
+    { name: 'ML (YOLO/TF)', level: 75, color: 'bg-neo-orange' },
+    { name: 'UI/UX DESIGN', level: 90, color: 'bg-neo-purple' },
   ];
 
-  const ProgressBar = ({ level, color }: { level: number; color: string }) => (
-    <div className="w-full h-4 bg-white border-2 border-black">
-      <div
-        className={`h-full ${color} transition-all`}
-        style={{ width: `${level}%` }}
-      ></div>
-    </div>
-  );
+  // Mock data for contribution graph
+  const contributionData = Array.from({ length: 365 }, (_, i) => ({
+    level: Math.floor(Math.random() * 5), // 0 to 4
+  }));
+
+  const getColorClass = (level: number) => {
+    switch (level) {
+      case 0: return 'bg-neo-white';
+      case 1: return 'bg-neo-green opacity-30';
+      case 2: return 'bg-neo-green opacity-60';
+      case 3: return 'bg-neo-green opacity-80';
+      case 4: return 'bg-neo-green';
+      default: return 'bg-neo-white';
+    }
+  };
 
   return (
-    <section className="w-full min-h-screen bg-orange-400 p-4 md:p-8 py-12 md:py-16">
+    <section className="w-full min-h-screen bg-neo-white p-4 md:p-8 pt-24 pb-16">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-5xl md:text-7xl font-black text-black mb-4">{title}</h1>
-          <p className="text-xl font-bold text-black">{desc}</p>
+        <div className="mb-16">
+          <h1 className="text-6xl md:text-9xl font-black text-neo-black mb-4 uppercase leading-none italic">
+            {title}
+          </h1>
+          <p className="text-xl md:text-2xl font-bold text-neo-black max-w-2xl border-l-8 border-neo-black pl-6 italic">
+            {desc}
+          </p>
         </div>
 
-        {/* Key Stats */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        {/* Key Stats Grid */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {stats.map((stat, idx) => (
             <NeoCard
               key={idx}
-              shadow="lg"
-              className={`${stat.bg} p-6 text-center hover:shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-all`}
+              shadow="md"
+              className={`${stat.bg} p-8 flex flex-col items-center justify-center text-center hover:translate-y-[-4px] hover:shadow-neo transition-all`}
             >
-              <p className="text-sm font-black text-black mb-2">{stat.label}</p>
-              <p className="text-4xl font-black text-black mb-2">{stat.value}</p>
-              <p className="text-xs font-bold text-gray-700">{stat.unit}</p>
+              <p className="text-xs font-black text-neo-black mb-2 uppercase tracking-tighter">{stat.label}</p>
+              <p className="text-5xl md:text-6xl font-black text-neo-black leading-none">{stat.value}</p>
+              <p className="text-xs font-black text-neo-black mt-2 uppercase">{stat.unit}</p>
             </NeoCard>
           ))}
         </div>
 
-        {/* Skills Section */}
-        <NeoCard shadow="lg" className="p-8 md:p-12 bg-white mb-12">
-          <h2 className="text-4xl font-black text-black mb-8">SKILL MATRIX</h2>
-
-          <div className="space-y-6">
-            {skills.map((skill, idx) => (
-              <div key={idx}>
-                <div className="flex justify-between mb-2">
-                  <p className="font-black text-black text-lg">{skill.name}</p>
-                  <p className="font-bold text-black">{skill.level}%</p>
-                </div>
-                <ProgressBar
-                  level={skill.level}
-                  color={idx % 3 === 0 ? 'bg-yellow-400' : idx % 3 === 1 ? 'bg-cyan-300' : 'bg-lime-400'}
-                />
-              </div>
-            ))}
-          </div>
-        </NeoCard>
-
-        {/* Activity Heatmap */}
-        <div className="grid md:grid-cols-2 gap-8">
-          <NeoCard shadow="lg" className="p-8 bg-cyan-300">
-            <h3 className="text-3xl font-black text-black mb-6">YEARLY ACTIVITY</h3>
-            <div className="grid grid-cols-7 gap-2 mb-4">
-              {Array.from({ length: 52 }).map((_, week) => (
-                <div key={week} className="space-y-2">
-                  {Array.from({ length: 7 }).map((_, day) => (
+        <div className="grid lg:grid-cols-3 gap-12 mb-16">
+          {/* Skill Matrix */}
+          <NeoCard shadow="lg" className="lg:col-span-1 p-8 bg-neo-white border-neo-black">
+            <h2 className="text-4xl font-black text-neo-black mb-10 uppercase border-b-4 border-neo-black pb-2 inline-block leading-none">
+              SKILL MATRIX
+            </h2>
+            <div className="space-y-8">
+              {skills.map((skill, idx) => (
+                <div key={idx}>
+                  <div className="flex justify-between mb-2">
+                    <p className="font-black text-neo-black text-sm uppercase">{skill.name}</p>
+                    <p className="font-black text-neo-black text-sm">{skill.level}%</p>
+                  </div>
+                  <div className="w-full h-6 bg-neo-white neo-border-sm neo-shadow-sm p-1">
                     <div
-                      key={day}
-                      className={`w-4 h-4 border-2 border-black ${
-                        Math.random() > 0.3 ? 'bg-white' : 'bg-black'
-                      }`}
+                      className={`h-full ${skill.color} transition-all duration-1000`}
+                      style={{ width: `${skill.level}%` }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </NeoCard>
+
+          {/* GitHub Graph */}
+          <NeoCard shadow="lg" className="lg:col-span-2 p-8 bg-neo-white flex flex-col">
+            <h2 className="text-4xl font-black text-neo-black mb-10 uppercase border-b-4 border-neo-black pb-2 inline-block leading-none">
+              COMMIT ARCHIVE
+            </h2>
+            
+            <div className="flex-1 overflow-x-auto pb-4 custom-scrollbar">
+              <div className="min-w-[700px]">
+                <div className="grid grid-flow-col grid-rows-7 gap-1">
+                  {contributionData.map((data, idx) => (
+                    <div
+                      key={idx}
+                      className={`w-3 h-3 neo-border-sm ${getColorClass(data.level)}`}
+                      title={`Contribution Level: ${data.level}`}
                     ></div>
                   ))}
                 </div>
-              ))}
+              </div>
             </div>
-            <p className="text-xs font-bold text-black">Less</p>
-          </NeoCard>
 
-          <NeoCard shadow="lg" className="p-8 bg-lime-400">
-            <h3 className="text-3xl font-black text-black mb-6">TECH USAGE</h3>
-            <div className="space-y-3">
-              {[
-                { tech: 'TypeScript', pct: 45 },
-                { tech: 'React/JSX', pct: 30 },
-                { tech: 'CSS/Tailwind', pct: 15 },
-                { tech: 'Other', pct: 10 },
-              ].map((item, idx) => (
-                <div key={idx} className="flex items-center gap-3">
-                  <div className="flex-1 h-6 bg-white border-2 border-black">
-                    <div
-                      className="h-full bg-black"
-                      style={{ width: `${item.pct}%` }}
-                    ></div>
-                  </div>
-                  <p className="font-bold text-black text-sm w-12">{item.pct}%</p>
+            <div className="mt-8 flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <p className="text-xs font-black text-neo-black">LESS</p>
+                <div className="flex gap-1">
+                  {[0, 1, 2, 3, 4].map((l) => (
+                    <div key={l} className={`w-3 h-3 neo-border-sm ${getColorClass(l)}`}></div>
+                  ))}
                 </div>
-              ))}
+                <p className="text-xs font-black text-neo-black">MORE</p>
+              </div>
+              <NeoButton variant="secondary" size="sm" className="neo-border-sm shadow-neo-sm hover:shadow-none hover:translate-x-[2px] hover:translate-y-[2px]">
+                FETCH LIVE_DATA
+              </NeoButton>
             </div>
           </NeoCard>
         </div>
+
+        {/* Technical Status Card */}
+        <NeoCard shadow="lg" className="p-10 bg-neo-black text-neo-white">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 text-center md:text-left">
+            <div>
+              <p className="text-neo-green font-black mb-2 uppercase tracking-widest">SYSTEM_STATUS: OPERATIONAL</p>
+              <h2 className="text-4xl md:text-5xl font-black uppercase leading-none italic">CURRENT_FOCUS: MACHINE_LEARNING_INTEGRATION</h2>
+            </div>
+            <div className="w-full md:w-auto">
+              <p className="text-6xl font-black text-neo-yellow">0.02s</p>
+              <p className="text-xs font-black uppercase tracking-widest opacity-60">LATENCY_CORE_PROCESS</p>
+            </div>
+          </div>
+        </NeoCard>
       </div>
     </section>
   );
+
 };
 
 export default DashboardHeroSection;

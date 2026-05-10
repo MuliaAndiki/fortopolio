@@ -22,24 +22,24 @@ const ChatRoomHeroSection: React.FC<Props> = ({ title = 'Global Chat Room', desc
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      author: 'Designer_Max',
-      message: 'Just launched a new design system! Check it out on GitHub',
-      timestamp: '2:34 PM',
-      color: 'bg-yellow-300',
+      author: 'ADMIN_MULIA',
+      message: 'WELCOME TO THE VOID. CORE SYSTEMS ARE STABLE.',
+      timestamp: '00:01',
+      color: 'bg-neo-green',
     },
     {
       id: 2,
-      author: 'CodeArtisan',
-      message: 'Neo-brutalism is the future of web design 🔥',
-      timestamp: '2:45 PM',
-      color: 'bg-cyan-300',
+      author: 'GUEST_X',
+      message: 'THE INTERFACE IS AGGRESSIVE. I LOVE IT.',
+      timestamp: '09:45',
+      color: 'bg-neo-yellow',
     },
     {
       id: 3,
-      author: 'DevJourney',
-      message: 'Anyone else building with Tailwind? Performance is insane!',
-      timestamp: '3:12 PM',
-      color: 'bg-lime-400',
+      author: 'VOXEL_BOY',
+      message: 'DEPLOYING NEUBRUTALISM TO ALL SECTORS...',
+      timestamp: '14:22',
+      color: 'bg-neo-pink',
     },
   ]);
 
@@ -49,99 +49,110 @@ const ChatRoomHeroSection: React.FC<Props> = ({ title = 'Global Chat Room', desc
     if (inputValue.trim()) {
       const newMessage: Message = {
         id: messages.length + 1,
-        author: 'You',
-        message: inputValue,
+        author: 'ANONYMOUS_USER',
+        message: inputValue.toUpperCase(),
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        color: 'bg-pink-400',
+        color: 'bg-neo-cyan',
       };
       setMessages([...messages, newMessage]);
       setInputValue('');
     }
   };
 
-  const colors = ['bg-yellow-300', 'bg-cyan-300', 'bg-lime-400', 'bg-pink-400', 'bg-orange-400'];
-
   return (
-    <section className="w-full min-h-screen bg-blue-400 p-4 md:p-8 py-12 md:py-16">
-      <div className="max-w-4xl mx-auto h-screen flex flex-col">
+    <section className="w-full min-h-screen bg-neo-black p-4 md:p-8 pt-24 pb-16 font-mono">
+      <div className="max-w-5xl mx-auto h-[80vh] flex flex-col">
         {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-5xl md:text-7xl font-black text-black mb-2">{title}</h1>
-          <p className="text-lg font-bold text-black">{desc || 'Leave a message for visitors around the world'}</p>
+        <div className="mb-8 flex justify-between items-end border-b-4 border-neo-green pb-4">
+          <div>
+            <h1 className="text-4xl md:text-7xl font-black text-neo-green mb-2 uppercase leading-none tracking-tighter">
+              {title}
+            </h1>
+            <p className="text-sm font-bold text-neo-green opacity-80 uppercase tracking-widest animate-pulse">
+              {desc}
+            </p>
+          </div>
+          <div className="hidden md:block text-neo-green text-right">
+            <p className="text-xs font-black">LOCAL_TIME: {new Date().toLocaleTimeString()}</p>
+            <p className="text-xs font-black">NODE_ID: 0x882A</p>
+          </div>
         </div>
 
-        {/* Chat Container */}
-        <div className="flex-1 flex flex-col min-h-0">
+        {/* Terminal Container */}
+        <NeoCard
+          shadow="lg"
+          className="flex-1 flex flex-col bg-neo-white border-8 border-neo-black overflow-hidden"
+        >
+          {/* Terminal Title Bar */}
+          <div className="bg-neo-black p-2 flex justify-between items-center">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-neo-pink"></div>
+              <div className="w-3 h-3 rounded-full bg-neo-yellow"></div>
+              <div className="w-3 h-3 rounded-full bg-neo-green"></div>
+            </div>
+            <p className="text-[10px] font-black text-neo-white uppercase tracking-[0.3em]">SECURE_CONNECTION_ESTABLISHED</p>
+          </div>
+
           {/* Messages Area */}
-          <NeoCard
-            shadow="lg"
-            className="flex-1 overflow-y-auto bg-white p-6 mb-6 space-y-4 min-h-0"
-          >
-            {messages.map((msg, idx) => (
-              <NeoCard
-                key={msg.id}
-                shadow="none"
-                className={`${colors[idx % colors.length]} p-4 border-2 border-black`}
-              >
-                <div className="flex justify-between items-start mb-2">
-                  <p className="font-black text-black text-lg">{msg.author}</p>
-                  <p className="text-xs font-bold text-gray-700">{msg.timestamp}</p>
+          <div className="flex-1 overflow-y-auto p-6 space-y-6 bg-[#f0f0f0] custom-scrollbar">
+            {messages.map((msg) => (
+              <div key={msg.id} className="flex flex-col gap-1 items-start group">
+                <div className="flex items-center gap-2">
+                  <span className={`px-2 py-0.5 text-[10px] font-black uppercase text-neo-black ${msg.color}`}>
+                    {msg.author}
+                  </span>
+                  <span className="text-[10px] font-bold text-neo-black/40 italic">{msg.timestamp}</span>
                 </div>
-                <p className="text-base font-semibold text-black">{msg.message}</p>
-              </NeoCard>
+                <div className="bg-neo-white neo-border-sm p-3 neo-shadow-sm group-hover:shadow-neo transition-all max-w-[80%]">
+                  <p className="text-sm md:text-base font-black text-neo-black uppercase leading-tight">
+                    {msg.message}
+                  </p>
+                </div>
+              </div>
             ))}
-          </NeoCard>
+            <div className="h-1 animate-pulse bg-neo-black w-4"></div>
+          </div>
 
           {/* Input Area */}
-          <div className="space-y-4">
-            <NeoCard shadow="lg" className="p-6 bg-white">
-              <div className="flex flex-col gap-4">
-                <div className="flex gap-3">
-                  <input
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyPress={(e) => e.key === 'Enter' && handleSend()}
-                    placeholder="Type your message here..."
-                    className="flex-1 px-4 py-3 border-4 border-black font-bold text-lg focus:outline-none focus:ring-4 focus:ring-yellow-300 bg-gray-50"
-                  />
-                  <NeoButton
-                    variant="destructive"
-                    size="lg"
-                    onClick={handleSend}
-                    className="px-8 py-3 text-lg"
-                  >
-                    SEND
-                  </NeoButton>
-                </div>
-                <p className="text-xs font-bold text-gray-500">
-                  Total messages: {messages.length} • Active users: 147
-                </p>
+          <div className="p-6 border-t-8 border-neo-black bg-neo-white">
+            <div className="flex flex-col md:flex-row gap-4">
+              <div className="flex-1 relative">
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 font-black text-neo-black text-xl">
+                  {'>'}
+                </span>
+                <input
+                  type="text"
+                  value={inputValue}
+                  onChange={(e) => setInputValue(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && handleSend()}
+                  placeholder="INPUT_TRANSMISSION..."
+                  className="w-full pl-10 pr-4 py-4 border-4 border-neo-black font-black text-lg focus:outline-none focus:bg-neo-yellow transition-colors uppercase placeholder:text-neo-black/30"
+                />
               </div>
-            </NeoCard>
-
-            {/* Online Users */}
-            <div>
-              <p className="text-sm font-bold text-black mb-3">ONLINE NOW (12)</p>
-              <div className="flex flex-wrap gap-2">
-                {['Designer_Max', 'CodeArtisan', 'DevJourney', 'PixelPusher', 'WebWizard'].map(
-                  (user, idx) => (
-                    <NeoCard
-                      key={idx}
-                      shadow="none"
-                      className="px-3 py-2 bg-white border-2 border-black text-sm font-bold text-black"
-                    >
-                      • {user}
-                    </NeoCard>
-                  )
-                )}
-              </div>
+              <NeoButton
+                variant="primary"
+                size="lg"
+                onClick={handleSend}
+                className="bg-neo-green text-neo-black hover:bg-neo-yellow border-4 px-12 italic"
+              >
+                EXECUTE
+              </NeoButton>
             </div>
           </div>
+        </NeoCard>
+        
+        {/* Status Bar */}
+        <div className="mt-4 flex flex-wrap gap-4 justify-between items-center text-[10px] font-black text-neo-green uppercase tracking-widest">
+          <div className="flex gap-4">
+            <p>ACTIVE_NODES: 128</p>
+            <p>PACKETS_SENT: 4,092</p>
+          </div>
+          <p className="animate-pulse">ENCRYPTION: AES-256-BIT</p>
         </div>
       </div>
     </section>
   );
+
 };
 
 export default ChatRoomHeroSection;
