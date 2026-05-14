@@ -1,5 +1,5 @@
-import { cn } from "@/utils/classname";
 import { IconProps } from "@/types/components/atoms/iconProps";
+import { cn } from "@/utils/classname";
 
 const SortIcon: React.FC<IconProps> = ({ className }) => {
   return (

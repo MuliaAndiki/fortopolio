@@ -2,13 +2,14 @@ import ContactHeroSection from '@/components/pages/public/contact/hero-section';
 import MainLayout from '@/core/layouts/Main.Layout';
 
 export default function Contact() {
-  const raw = {
-    title: 'contact screen',
-    desc: 'initial contact screen',
+  const data = {
+    title: 'THE CONTACT',
+    desc: 'Establish a direct communication channel. Open for collaborations and artifacts exchange.',
   };
   return (
     <MainLayout>
-      <ContactHeroSection desc={raw.desc} title={raw.title} />
+      <ContactHeroSection desc={data.desc} title={data.title} />
     </MainLayout>
   );
 }
+

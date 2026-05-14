@@ -2,13 +2,13 @@ import ChatRoomHeroSection from '@/components/pages/public/chat-room/hero-sectio
 import MainLayout from '@/core/layouts/Main.Layout';
 
 export default function ChatRoom() {
-  const raw = {
-    title: 'Chat room',
-    desc: 'initial schreen',
+  const data = {
+    title: 'THE TERMINAL',
+    desc: 'Bypass the firewall. Leave your mark on the global guestbook.',
   };
   return (
     <MainLayout>
-      <ChatRoomHeroSection desc={raw.desc} title={raw.title} />
+      <ChatRoomHeroSection desc={data.desc} title={data.title} />
     </MainLayout>
   );
 }

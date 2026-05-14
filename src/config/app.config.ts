@@ -103,7 +103,7 @@ export const navigationMenuConfig: NavigationMenuConfig = {
 export const SidebarMenuConfig: SidebarContentType[] = [
   {
     title: 'Home',
-    url: '/',
+    url: '/home',
     icon: ActivityIcon,
   },
   {

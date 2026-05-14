@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+
 import { useSidebar } from '@/core';
 
 const ContentLayout = ({ children }: { children: React.ReactNode }) => {

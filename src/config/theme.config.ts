@@ -42,97 +42,97 @@ interface ThemeConfig {
 
 export const themeConfig: ThemeConfig = {
   light: {
-    background: '#EAF7F2',
-    foreground: '#036666',
+    background: '#FDFBF7',
+    foreground: '#000000', // Hitam pekat untuk teks utama
     card: {
-      background: '#F7FCFA',
-      foreground: '#036666',
+      background: '#FFFFFF', // Putih murni untuk kartu agar kontras dengan background
+      foreground: '#000000',
     },
     popover: {
-      background: '#F7FCFA',
-      foreground: '#036666',
+      background: '#FFFFFF',
+      foreground: '#000000',
     },
     primary: {
-      background: '#248277',
-      foreground: '#F7FCFA',
+      background: '#FFD800', // Kuning Neubrutalism klasik yang sangat mencolok
+      foreground: '#000000',
     },
     secondary: {
-      background: '#88D4AB',
-      foreground: '#036666',
+      background: '#FF90E8', // Pink permen karet (Bubblegum Pink)
+      foreground: '#000000',
     },
     muted: {
-      background: '#D8EFE5',
-      foreground: 'rgba(3, 102, 102, 0.65)',
+      background: '#E2E8F0', // Abu-abu solid, tanpa rgba
+      foreground: '#475569',
     },
     accent: {
-      background: '#67B99A',
-      foreground: '#F7FCFA',
+      background: '#A6FAFF', // Cyan terang
+      foreground: '#000000',
     },
     destructive: {
-      background: '#B95757',
-      foreground: '#F7FCFA',
+      background: '#FF4D4D', // Merah solid yang agresif
+      foreground: '#000000',
     },
     warning: {
-      background: '#A7B96A',
-      foreground: '#113C34',
+      background: '#FF9F1C', // Oranye terang
+      foreground: '#000000',
     },
     success: {
-      background: '#248277',
-      foreground: '#F7FCFA',
+      background: '#B4FF39', // Hijau lime terang
+      foreground: '#000000',
     },
     info: {
-      background: '#469D89',
-      foreground: '#F7FCFA',
+      background: '#38BDF8', // Biru solid
+      foreground: '#000000',
     },
-    border: 'rgba(3, 102, 102, 0.2)',
-    input: 'rgba(3, 102, 102, 0.2)',
-    ring: 'rgba(36, 130, 119, 0.35)',
+    border: '#000000', // WAJIB HITAM SOLID untuk outline tebal
+    input: '#FFFFFF',
+    ring: '#000000', // Fokus ring berwarna hitam pekat (bukan transparan)
   },
   dark: {
-    background: '#042F2F',
-    foreground: '#D8EFE5',
+    background: '#121212', // Hitam gelap (bukan pitch black agar card terlihat)
+    foreground: '#FFFFFF', // Putih murni
     card: {
-      background: '#0A3F3F',
-      foreground: '#D8EFE5',
+      background: '#1E1E1E',
+      foreground: '#FFFFFF',
     },
     popover: {
-      background: '#0A3F3F',
-      foreground: '#D8EFE5',
+      background: '#1E1E1E',
+      foreground: '#FFFFFF',
     },
     primary: {
-      background: '#67B99A',
-      foreground: '#063A3A',
+      background: '#B4FF39', // Hijau Lime neon sebagai aksen utama di dark mode
+      foreground: '#000000', // Teks hitam di atas tombol lime
     },
     secondary: {
-      background: '#248277',
-      foreground: '#D8EFE5',
+      background: '#BE94FF', // Ungu Neon
+      foreground: '#000000',
     },
     muted: {
-      background: '#0B4A4A',
-      foreground: 'rgba(216, 239, 229, 0.72)',
+      background: '#333333',
+      foreground: '#A3A3A3',
     },
     accent: {
-      background: '#469D89',
-      foreground: '#EAF7F2',
+      background: '#FF5722', // Oranye vulkanik
+      foreground: '#FFFFFF',
     },
     destructive: {
-      background: '#A84B58',
-      foreground: '#F7FCFA',
+      background: '#FF2A2A', // Merah neon
+      foreground: '#FFFFFF',
     },
     warning: {
-      background: '#7F9252',
-      foreground: '#EAF7F2',
+      background: '#FFC300', // Kuning stabilo
+      foreground: '#000000',
     },
     success: {
-      background: '#67B99A',
-      foreground: '#063A3A',
+      background: '#00FF7F', // Hijau spring
+      foreground: '#000000',
     },
     info: {
-      background: '#469D89',
-      foreground: '#EAF7F2',
+      background: '#00E5FF', // Cyan terang
+      foreground: '#000000',
     },
-    border: 'rgba(136, 212, 171, 0.2)',
-    input: 'rgba(136, 212, 171, 0.22)',
-    ring: 'rgba(103, 185, 154, 0.4)',
+    border: '#FFFFFF', // WAJIB PUTIH SOLID untuk outline di dark mode
+    input: '#1E1E1E',
+    ring: '#B4FF39', // Fokus ring berwarna neon
   },
 };

@@ -48,19 +48,26 @@ export function formatCurrency(amount: number, currency = 'USD') {
 
 // Check if menu is active based on current pathname
 export function isActiveMenu(menuUrl: string, currentPath: string): boolean {
-  // Exact match untuk root/dashboard
-  if (menuUrl === '/' && currentPath === '/') {
-    return true;
-  }
+  if (!menuUrl || !currentPath) return false;
 
-  // Jangan match root untuk path lain
-  if (menuUrl === '/' && currentPath !== '/') {
-    return false;
-  }
+  // 1. Jika ini menu hash/scroll (#), abaikan dari pengecekan path
+  if (menuUrl.startsWith('#')) return false;
 
-  // Check if current path starts with menu URL
-  // Contoh: menuUrl="/reports" akan match dengan "/reports/annual-report"
-  return currentPath.startsWith(menuUrl);
+  // 2. Hilangkan trailing slash (/) di akhir untuk komparasi yang aman
+  // Contoh: '/dashboard/' menjadi '/dashboard'
+  const safeMenuUrl = menuUrl.endsWith('/') && menuUrl.length > 1 ? menuUrl.slice(0, -1) : menuUrl;
+  const safeCurrentPath =
+    currentPath.endsWith('/') && currentPath.length > 1 ? currentPath.slice(0, -1) : currentPath;
+
+  // 3. Cek Exact Match (Cocok 100%)
+  if (safeMenuUrl === safeCurrentPath) return true;
+
+  // 4. Jangan biarkan root '/' match dengan halaman lain
+  if (safeMenuUrl === '/') return false;
+
+  // 5. Cek Sub-path: Tambahkan '/' agar '/user' tidak ikut aktif di '/users'
+  // Akan match untuk: '/reports' dan '/reports/annual'
+  return safeCurrentPath.startsWith(`${safeMenuUrl}/`);
 }
 
 export const smoothScrolltoSection = (elementId: string) => {
