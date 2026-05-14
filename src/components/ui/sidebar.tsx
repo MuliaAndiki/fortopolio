@@ -2,12 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-
-import { SidebarMenuConfig } from '@/config/app.config';
 import { useSidebar } from '@/core/providers/sidebarProvinder';
-
-import SidebarSection from '../organisms/Sidebar';
-import User from '../organisms/User';
 
 export const Sidebar = () => {
   const { isOpen, isMobile, close } = useSidebar();
@@ -35,11 +30,10 @@ export const Sidebar = () => {
       )}
 
       <div
-        className={`fixed top-0 left-0 h-screen w-sidebar-width bg-neo-cyan border-r-8 border-neo-black text-neo-black pt-topbar-height transition-transform duration-300 ease-in-out z-50 ${
+        className={`fixed top-0 left-0 h-screen w-sidebar-width bg-neo-white border-r-8 border-neo-black text-neo-black pt-topbar-height transition-transform duration-300 ease-in-out z-50 ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
         }`}
       >
-
         {isMobile && (
           <button
             onClick={close}

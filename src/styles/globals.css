@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -8,16 +8,16 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  
-  --color-neo-yellow: #FFD600;
-  --color-neo-pink: #FF00E5;
-  --color-neo-green: #00FF19;
-  --color-neo-blue: #0057FF;
-  --color-neo-white: #FFFFFF;
+
+  --color-neo-yellow: #ffd600;
+  --color-neo-pink: #ff00e5;
+  --color-neo-green: #00ff19;
+  --color-neo-blue: #0057ff;
+  --color-neo-white: #ffffff;
   --color-neo-black: #000000;
-  --color-neo-orange: #FF6B00;
+  --color-neo-orange: #ff6b00;
   --color-neo-purple: #911dec;
-  --color-neo-cyan: #00F0FF;
+  --color-neo-cyan: #00f0ff;
 
   --shadow-neo: 8px 8px 0px 0px rgba(0, 0, 0, 1);
   --shadow-neo-sm: 4px 4px 0px 0px rgba(0, 0, 0, 1);
@@ -35,22 +35,20 @@
   --color-ring: #000000;
 }
 
-
-
 :root {
   scroll-behavior: smooth;
   overflow-x: hidden;
-  
-  --background: #FFFFFF;
+
+  --background: #ffffff;
   --foreground: #000000;
-  
+
   --neo-border-width: 4px;
   --neo-shadow: 8px 8px 0px 0px #000000;
 }
 
 .dark {
   --background: #000000;
-  --foreground: #FFFFFF;
+  --foreground: #ffffff;
 }
 
 @layer utilities {
@@ -73,8 +71,6 @@
     @apply transition-all active:translate-x-[2px] active:translate-y-[2px] active:shadow-none;
   }
 }
-
-
 
 @layer base {
   * {

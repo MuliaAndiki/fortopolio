@@ -4,3 +4,6 @@ export * from './Footer';
 export * from './Header';
 export * from './Sidebar';
 export * from './Topbar';
+export * from './CommitArchive';
+export * from './SkillMatric';
+export * from './Article';

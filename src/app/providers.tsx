@@ -30,7 +30,7 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
   return (
     <Providers>
       <NextTopLoader
-        color="#c269da"
+        color="#ffd600"
         initialPosition={0.08}
         crawlSpeed={200}
         height={3}

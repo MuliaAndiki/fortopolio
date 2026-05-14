@@ -5,12 +5,11 @@ import React, { useState } from 'react';
 import { NeoButton } from '@/components/atoms/NeoButton';
 import { NeoCard } from '@/components/atoms/NeoCard';
 
-interface Props {
-  title?: string;
-  desc?: string;
-}
+import Link from 'next/link';
+import Image from 'next/image';
+import { SectionProps, SosialLinks } from '@/types';
 
-const ContactHeroSection: React.FC<Props> = ({ title = 'Get In Touch', desc = '' }) => {
+const ContactHeroSection: React.FC<SectionProps> = ({ title = 'Get In Touch', desc = '' }) => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -31,56 +30,49 @@ const ContactHeroSection: React.FC<Props> = ({ title = 'Get In Touch', desc = ''
     setFormData({ name: '', email: '', subject: '', message: '' });
   };
 
-  const socialLinks = [
+  const socialLinks: SosialLinks[] = [
     {
       name: 'GITHUB',
-      emoji: '⌨️',
+      image: '/images/svg/github.svg',
       url: 'https://github.com/muliaandiki',
-      bg: 'bg-neo-yellow',
-      desc: 'SOURCE_CODE_REPOS',
+      desc: 'SOURCE CODE',
     },
     {
       name: 'LINKEDIN',
-      emoji: '👔',
+      image: '/images/svg/linkedin.svg',
       url: 'https://linkedin.com/in/muliaandiki',
-      bg: 'bg-neo-blue',
-      textColor: 'text-neo-white',
-      desc: 'PROFESSIONAL_NETWORK',
+      desc: 'PROFESSIONAL NETWORK',
     },
     {
       name: 'EMAIL',
-      emoji: '📧',
+      image: '/images/svg/gmail.svg',
       url: 'mailto:muliaandiki@proton.me',
-      bg: 'bg-neo-pink',
-      desc: 'DIRECT_TRANSMISSION',
+      desc: 'DIRECT TRANSMISSION',
     },
   ];
 
   return (
-    <section className="w-full min-h-screen bg-neo-green p-4 md:p-8 pt-24 pb-16">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
+    <section className="w-full min-h-screen bg-neo-white p-4 md:p-8 pt-24 pb-16">
+      <div className="max-w-full mx-auto">
         <div className="mb-16 border-b-8 border-neo-black pb-8">
           <h1 className="text-6xl md:text-9xl font-black text-neo-black mb-4 uppercase leading-none italic">
             {title}
           </h1>
-          <p className="text-xl md:text-2xl font-bold text-neo-black max-w-3xl">
-            {desc}
-          </p>
+          <p className="text-xl md:text-2xl font-bold text-neo-black max-w-3xl">{desc}</p>
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12 items-start">
-          {/* Contact Form */}
           <div className="lg:col-span-2">
             <NeoCard shadow="lg" className="p-10 md:p-16 bg-neo-white border-neo-black">
               <h2 className="text-4xl font-black text-neo-black mb-10 uppercase border-b-4 border-neo-black pb-2 inline-block leading-none">
-                ENCRYPTED_MESSAGE
+                ENCRYPTED MESSAGE
               </h2>
 
               <div className="space-y-10">
-                {/* Name */}
                 <div className="group">
-                  <label className="text-xs font-black text-neo-black block mb-2 uppercase tracking-widest">SENDER_NAME</label>
+                  <label className="text-xs font-black text-neo-black block mb-2 uppercase tracking-widest">
+                    SENDER NAME
+                  </label>
                   <input
                     type="text"
                     name="name"
@@ -91,9 +83,10 @@ const ContactHeroSection: React.FC<Props> = ({ title = 'Get In Touch', desc = ''
                   />
                 </div>
 
-                {/* Email */}
                 <div className="group">
-                  <label className="text-xs font-black text-neo-black block mb-2 uppercase tracking-widest">SENDER_EMAIL</label>
+                  <label className="text-xs font-black text-neo-black block mb-2 uppercase tracking-widest">
+                    SENDER_EMAIL
+                  </label>
                   <input
                     type="email"
                     name="email"
@@ -104,9 +97,10 @@ const ContactHeroSection: React.FC<Props> = ({ title = 'Get In Touch', desc = ''
                   />
                 </div>
 
-                {/* Message */}
                 <div className="group">
-                  <label className="text-xs font-black text-neo-black block mb-2 uppercase tracking-widest">TRANSMISSION_CONTENT</label>
+                  <label className="text-xs font-black text-neo-black block mb-2 uppercase tracking-widest">
+                    TRANSMISSION CONTENT
+                  </label>
                   <textarea
                     name="message"
                     value={formData.message}
@@ -129,12 +123,13 @@ const ContactHeroSection: React.FC<Props> = ({ title = 'Get In Touch', desc = ''
             </NeoCard>
           </div>
 
-          {/* Sticky Notes */}
           <div className="space-y-8 lg:sticky lg:top-28">
-            <h2 className="text-4xl font-black text-neo-black uppercase italic">DIRECT_LINKS</h2>
+            <h2 className="text-4xl text-center font-black text-neo-black uppercase italic">
+              DIRECT LINKS
+            </h2>
 
             {socialLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.url}
                 target="_blank"
@@ -143,25 +138,30 @@ const ContactHeroSection: React.FC<Props> = ({ title = 'Get In Touch', desc = ''
               >
                 <NeoCard
                   shadow="lg"
-                  className={`${link.bg} ${link.textColor || 'text-neo-black'} p-8 text-center hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer transform group-hover:-rotate-3`}
+                  className={` ${'text-neo-black'} p-8 flex items-center justify-center flex-col hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all cursor-pointer transform group-hover:-rotate-3`}
                 >
-                  <p className="text-6xl mb-4 group-hover:scale-125 transition-transform">{link.emoji}</p>
+                  <Image alt="icons" src={link.image} width={60} height={60} />
                   <h3 className="text-3xl font-black mb-2 uppercase">{link.name}</h3>
-                  <p className="text-xs font-black opacity-60 uppercase tracking-widest">{link.desc}</p>
+                  <p className="text-xs font-black opacity-60 uppercase tracking-widest">
+                    {link.desc}
+                  </p>
                 </NeoCard>
-              </a>
+              </Link>
             ))}
 
             <NeoCard shadow="md" className="p-8 bg-neo-white text-center">
-              <p className="text-xs font-black text-neo-black/40 uppercase tracking-widest mb-2">AVAILABILITY</p>
-              <p className="text-2xl font-black text-neo-black leading-none">MON-FRI: 09:00 - 17:00 WIB</p>
+              <p className="text-xs font-black text-neo-black/40 uppercase tracking-widest mb-2">
+                AVAILABILITY
+              </p>
+              <p className="text-2xl font-black text-neo-black leading-none">
+                MON-FRI: 09:00 - 17:00 WIB
+              </p>
             </NeoCard>
           </div>
         </div>
       </div>
     </section>
   );
-
 };
 
 export default ContactHeroSection;

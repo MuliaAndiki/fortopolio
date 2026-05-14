@@ -42,7 +42,7 @@ interface ThemeConfig {
 
 export const themeConfig: ThemeConfig = {
   light: {
-    background: '#FDFBF7', // Off-white/kertas kusam agar mata tidak cepat lelah
+    background: '#FDFBF7',
     foreground: '#000000', // Hitam pekat untuk teks utama
     card: {
       background: '#FFFFFF', // Putih murni untuk kartu agar kontras dengan background

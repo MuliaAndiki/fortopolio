@@ -3,7 +3,7 @@ import MainLayout from '@/core/layouts/Main.Layout';
 
 export default function ChatRoom() {
   const data = {
-    title: 'THE_TERMINAL',
+    title: 'THE TERMINAL',
     desc: 'Bypass the firewall. Leave your mark on the global guestbook.',
   };
   return (
@@ -12,4 +12,3 @@ export default function ChatRoom() {
     </MainLayout>
   );
 }
-
