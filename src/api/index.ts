@@ -6,7 +6,7 @@ import { Logger } from '@/utils';
 export type { ApiResponse } from './type';
 import { ApiError as ApiErrorClass, type ApiResponse } from './type';
 
-const BASE_URL = process.env.GETSMART_API_URL || process.env.NEXT_PUBLIC_GETSMART_API_URL || '';
+const BASE_URL = process.env.defaul || process.env.defaul || '';
 
 const COOKIE_KEYS = {
   accessToken: 'access_token',
