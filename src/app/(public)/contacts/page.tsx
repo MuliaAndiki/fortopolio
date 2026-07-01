@@ -4,7 +4,7 @@ import MainLayout from '@/core/layouts/Main.Layout';
 export default function Contact() {
   const data = {
     title: 'THE CONTACT',
-    desc: 'Establish a direct communication channel. Open for collaborations and artifacts exchange.',
+    desc: 'Hubungi untuk kolaborasi proyek, riset AI/IoT, atau pertukaran ide seputar pengembangan perangkat lunak.',
   };
   return (
     <MainLayout>

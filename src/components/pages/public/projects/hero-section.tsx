@@ -3,7 +3,7 @@ import React from 'react';
 import { NeoButton } from '@/components/atoms/NeoButton';
 import { NeoCard } from '@/components/atoms/NeoCard';
 import Image from 'next/image';
-import { projects } from '@/constant/dummy';
+import { projects } from '@/constant/portfolio';
 import { tagIcons } from '@/utils';
 import { SectionProps } from '@/types';
 
@@ -19,18 +19,23 @@ const ProjectHeroSection: React.FC<SectionProps> = ({ title = 'My Projects', des
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {projects.map((project, idx) => (
+          {projects.map((project) => (
             <NeoCard
-              key={idx}
+              key={project.name}
               shadow="xl"
               className={`${project.bg} p-10 flex flex-col justify-between hover:translate-x-[-4px] hover:translate-y-[-4px] hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-all group`}
             >
               <div>
-                <div className="flex justify-between items-start mb-4">
+                <div className="flex justify-between items-start mb-2">
                   <h3 className={`text-4xl md:text-5xl font-black uppercase ${project.textColor}`}>
                     {project.name}
                   </h3>
                 </div>
+                <p
+                  className={`text-xs font-black uppercase tracking-widest mb-1 ${project.textColor} opacity-80`}
+                >
+                  {project.role} · {project.period}
+                </p>
                 <p
                   className={`text-lg md:text-xl font-bold mb-8 leading-tight ${project.textColor}`}
                 >
@@ -39,13 +44,10 @@ const ProjectHeroSection: React.FC<SectionProps> = ({ title = 'My Projects', des
               </div>
 
               <div>
-                <div className="mb-8 flex flex-wrap gap-2">
+                <div className="mb-8 flex flex-wrap gap-4">
                   {project.tags.map((tag) => (
-                    <div className="flex justify-start items-center flex-col  space-y-5">
-                      <span
-                        key={tag}
-                        className=" bg-neo-black text-neo-white px-3 py-1 text-xs font-black uppercase tracking-widest"
-                      >
+                    <div key={tag} className="flex justify-start items-center flex-col space-y-3">
+                      <span className="bg-neo-black text-neo-white px-3 py-1 text-xs font-black uppercase tracking-widest">
                         {tag}
                       </span>
                       {tagIcons[tag] && (
@@ -54,7 +56,7 @@ const ProjectHeroSection: React.FC<SectionProps> = ({ title = 'My Projects', des
                           width={50}
                           height={50}
                           src={tagIcons[tag]}
-                          className="object-cover "
+                          className="object-cover"
                         />
                       )}
                     </div>

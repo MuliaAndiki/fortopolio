@@ -4,16 +4,28 @@ export const siteConfig = {
   name: 'Fortopolio',
   shortName: 'Forto',
   description:
-    'A location-aware environmental insight application delivering real-time air quality, heat risk, flood potential, noise estimation, and green proximity intelligence.',
-  url: 'https://aeris-app.com',
-  locale: 'en_US',
+    'Portfolio resmi Mulia Andiki — Software Engineer dengan fokus Frontend, Backend, AI, dan IoT. Mahasiswa Informatika USK, Banda Aceh.',
+  url: 'https://fortopolio-nu.vercel.app',
+  locale: 'id_ID',
   themeColor: '#0EA5A4',
-  backgroundColor: '#0F172A',
-  keywords: ['Mulia Andiki', 'Fortopolio Mulia Andiki'],
+  backgroundColor: '#FFFFFF',
+  keywords: [
+    'Mulia Andiki',
+    'Fortopolio',
+    'Software Engineer',
+    'Frontend Developer',
+    'Full Stack Developer',
+    'Informatika USK',
+    'Next.js',
+    'React',
+    'YOLOv8',
+    'IoT',
+  ],
 };
+
 export const metadata: Metadata = {
   title: {
-    default: 'Fortopolio - Mulia Andiki',
+    default: 'Fortopolio — Mulia Andiki',
     template: '%s | Fortopolio',
   },
 
@@ -21,8 +33,8 @@ export const metadata: Metadata = {
   keywords: siteConfig.keywords,
   metadataBase: new URL(siteConfig.url),
 
-  applicationName: 'AERIS',
-  authors: [{ name: 'AERIS Team' }],
+  applicationName: 'Fortopolio',
+  authors: [{ name: 'Mulia Andiki' }],
   creator: 'Mulia Andiki',
   publisher: 'Mulia Andiki',
 
@@ -42,31 +54,30 @@ export const metadata: Metadata = {
     type: 'website',
     locale: siteConfig.locale,
     url: siteConfig.url,
-    title: 'AERIS - Environmental Intelligence Platform',
+    title: 'Fortopolio — Mulia Andiki',
     description: siteConfig.description,
-    siteName: 'AERIS',
+    siteName: 'Fortopolio',
     images: [
       {
         url: '/images/og-image.png',
         width: 1200,
         height: 630,
-        alt: 'AERIS Environmental Dashboard',
+        alt: 'Fortopolio — Mulia Andiki',
       },
     ],
   },
 
   twitter: {
     card: 'summary_large_image',
-    title: 'AERIS - Environmental Intelligence Platform',
+    title: 'Fortopolio — Mulia Andiki',
     description: siteConfig.description,
-    creator: '@aerisapp',
     images: ['/images/og-image.png'],
   },
 
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'AERIS',
+    title: 'Fortopolio',
   },
 
   formatDetection: {

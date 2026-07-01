@@ -18,22 +18,22 @@ const ChatRoomHeroSection: React.FC<SectionProps> = ({ title = 'Global Chat Room
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 1,
-      author: 'ADMIN MULIA',
-      message: 'WELCOME TO THE VOID. CORE SYSTEMS ARE STABLE.',
+      author: 'MULIA ANDIKI',
+      message: 'SELAMAT DATANG DI FORTOPOLIO. PORTFOLIO RESMI SOFTWARE ENGINEER.',
       timestamp: '00:01',
       color: 'bg-neo-green',
     },
     {
       id: 2,
-      author: 'GUEST X',
-      message: 'THE INTERFACE IS AGGRESSIVE. I LOVE IT.',
+      author: 'SYSTEM',
+      message: '7 PROYEK TERDAFTAR — ETNO, GETSMART, AERIS, NUTRIPLATE, LOKA-LOKA, KOSTHUB, CRM.',
       timestamp: '09:45',
       color: 'bg-neo-yellow',
     },
     {
       id: 3,
-      author: 'VOXEL BOY',
-      message: 'DEPLOYING NEUBRUTALISM TO ALL SECTORS...',
+      author: 'INNOVILLAGE',
+      message: 'TOP 180 NASIONAL 2025 — NUTRIPLATE IoT/PWA + YOLOv8.',
       timestamp: '14:22',
       color: 'bg-neo-pink',
     },

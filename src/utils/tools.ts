@@ -1,10 +1,10 @@
-export const skills = [
+export const skillLevels = [
   { name: 'NEXT.JS', level: 95, color: 'bg-neo-yellow' },
   { name: 'REACT', level: 93, color: 'bg-neo-cyan' },
-  { name: 'TAILWIND', level: 98, color: 'bg-neo-pink' },
-  { name: 'BUN/ELYSIA', level: 85, color: 'bg-neo-green' },
-  { name: 'ML (YOLO/TF)', level: 75, color: 'bg-neo-orange' },
-  { name: 'UI/UX DESIGN', level: 90, color: 'bg-neo-purple' },
+  { name: 'TAILWIND CSS', level: 98, color: 'bg-neo-pink' },
+  { name: 'BUN / ELYSIAJS', level: 85, color: 'bg-neo-green' },
+  { name: 'PYTHON / FASTAPI', level: 80, color: 'bg-neo-orange' },
+  { name: 'YOLOv8 / CNN', level: 75, color: 'bg-neo-purple' },
 ];
 
 export const tagIcons: Record<string, string> = {
@@ -13,5 +13,12 @@ export const tagIcons: Record<string, string> = {
   YOLO: '/images/svg/yolo.svg',
   Tailwind: '/images/svg/tailwind.svg',
   IoT: '/images/svg/iot.svg',
-  ExpoJs: '/images/svg/expo.svg',
+  PWA: '/images/svg/react.svg',
+  Bun: '/images/svg/bun.svg',
+  ElysiaJS: '/images/svg/elysiajs.svg',
+  'Express.js': '/images/svg/expressjs.svg',
+  PostgreSQL: '/images/svg/postgressql.svg',
 };
+
+// Backward-compatible alias
+export const skills = skillLevels;

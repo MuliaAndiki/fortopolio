@@ -7,6 +7,7 @@ import { NeoCard } from '@/components/atoms/NeoCard';
 
 import Link from 'next/link';
 import Image from 'next/image';
+import { profile } from '@/constant/portfolio';
 import { SectionProps, SosialLinks } from '@/types';
 
 const ContactHeroSection: React.FC<SectionProps> = ({ title = 'Get In Touch', desc = '' }) => {
@@ -34,19 +35,19 @@ const ContactHeroSection: React.FC<SectionProps> = ({ title = 'Get In Touch', de
     {
       name: 'GITHUB',
       image: '/images/svg/github.svg',
-      url: 'https://github.com/muliaandiki',
+      url: profile.github,
       desc: 'SOURCE CODE',
     },
     {
       name: 'LINKEDIN',
       image: '/images/svg/linkedin.svg',
-      url: 'https://linkedin.com/in/muliaandiki',
+      url: profile.linkedin,
       desc: 'PROFESSIONAL NETWORK',
     },
     {
       name: 'EMAIL',
       image: '/images/svg/gmail.svg',
-      url: 'mailto:muliaandiki@proton.me',
+      url: `mailto:${profile.email}`,
       desc: 'DIRECT TRANSMISSION',
     },
   ];
@@ -151,11 +152,10 @@ const ContactHeroSection: React.FC<SectionProps> = ({ title = 'Get In Touch', de
 
             <NeoCard shadow="md" className="p-8 bg-neo-white text-center">
               <p className="text-xs font-black text-neo-black/40 uppercase tracking-widest mb-2">
-                AVAILABILITY
+                CONTACT
               </p>
-              <p className="text-2xl font-black text-neo-black leading-none">
-                MON-FRI: 09:00 - 17:00 WIB
-              </p>
+              <p className="text-lg font-black text-neo-black leading-tight mb-2">{profile.phone}</p>
+              <p className="text-sm font-bold text-neo-black/70">{profile.location}</p>
             </NeoCard>
           </div>
         </div>

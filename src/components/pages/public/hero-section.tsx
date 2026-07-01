@@ -19,16 +19,16 @@ const HeroSection = () => {
           </h1>
           <div className="mt-8 flex flex-wrap gap-3">
             <span className="text-xl md:text-3xl text-neo-black font-extrabold bg-neo-orange text-primary neo-border-sm px-4 py-2 neo-shadow-sm">
-              SOFTWARE ENGGINER
+              SOFTWARE ENGINEER
             </span>
           </div>
         </div>
 
         <p className="text-xl md:text-2xl font-bold text-neo-black max-w-xl leading-tight">
-          6th-semester CS student based in Aceh, Indonesia. Forging high-performance digital
-          artifacts with
+          Mahasiswa Semester 6 Informatika di USK, Banda Aceh. Membangun solusi AI, IoT, dan Full
+          Stack dengan
           <span className="bg-neo-green px-2 border-2 ">Next.js</span>,
-          <span className="bg-neo-blue text-neo-white px-2 ml-1 border-2">React</span>, and
+          <span className="bg-neo-blue text-neo-white px-2 ml-1 border-2">React</span>, dan
           <span className="bg-neo-cyan px-2 ml-1 border-2">Tailwind CSS</span>
         </p>
 

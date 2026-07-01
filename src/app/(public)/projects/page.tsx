@@ -4,7 +4,7 @@ import MainLayout from '@/core/layouts/Main.Layout';
 export default function Project() {
   const data = {
     title: 'SELECTED WORKS',
-    desc: 'A collection of digital artifacts, from IoT dashboards to smart learning platforms.',
+    desc: 'Koleksi proyek dari platform pembelajaran 3D, Computer Vision, IoT/PWA, hingga sistem transaksi digital.',
   };
   return (
     <MainLayout>
