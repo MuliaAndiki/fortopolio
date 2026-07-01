@@ -1,5 +1,5 @@
 import { NeoCard } from '../atoms';
-import { skills } from '@/utils/tools';
+import { skillLevels } from '@/utils/tools';
 
 const SkillMatric = () => {
   return (
@@ -8,7 +8,7 @@ const SkillMatric = () => {
         SKILL MATRIX
       </h2>
       <div className="space-y-8">
-        {skills.map((skill, idx) => (
+        {skillLevels.map((skill, idx) => (
           <div key={idx}>
             <div className="flex justify-between mb-2">
               <p className="font-black text-neo-black text-sm uppercase">{skill.name}</p>

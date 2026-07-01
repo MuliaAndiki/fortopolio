@@ -14,7 +14,7 @@ export default function User() {
       />
       <div className="w-full text-center font-semibold flex flex-col items-center">
         <h3>Mulia Andiki</h3>
-        <p className="text-xs font-light">@DikzyCode</p>
+        <p className="text-xs font-light">Software Engineer</p>
       </div>
       <div className="w-full  flex justify-between">
         <ThemeToggle />

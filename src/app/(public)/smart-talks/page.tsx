@@ -4,7 +4,7 @@ import MainLayout from '@/core/layouts/Main.Layout';
 export default function SmartTalk() {
   const data = {
     title: 'SMART TALKS',
-    desc: 'Deep dives into engineering, soft skills, and the art of focused creation.',
+    desc: 'Catatan teknis seputar Computer Vision, Full Stack Development, dan integrasi API dari proyek nyata.',
   };
   return (
     <MainLayout>

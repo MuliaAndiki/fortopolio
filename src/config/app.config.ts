@@ -46,35 +46,36 @@ interface AppConfig {
 }
 
 export const appConfig: AppConfig = {
-  name: 'App',
-  description: 'App',
+  name: 'Fortopolio',
+  description: 'Portfolio Mulia Andiki — Software Engineer',
   logo: '/images/logo.png',
   metadata: {
-    title: 'App',
-    description: 'App',
-    keywords: ['App'],
-    author: 'App',
-    image: 'App',
+    title: 'Fortopolio — Mulia Andiki',
+    description:
+      'Portfolio resmi Mulia Andiki. Software Engineer dengan fokus Frontend, Backend, AI, dan IoT.',
+    keywords: ['Mulia Andiki', 'Fortopolio', 'Software Engineer', 'Next.js', 'React'],
+    author: 'Mulia Andiki',
+    image: '/images/og-image.png',
   },
   social_media: {
     twitter: {
-      url: 'https://twitter.com/app',
+      url: 'https://twitter.com',
       icon: 'hugeicons:new-twitter-rectangle',
     },
     instagram: {
-      url: 'https://instagram.com/app',
+      url: 'https://instagram.com',
       icon: 'basil:instagram-outline',
     },
     linkedin: {
-      url: 'https://linkedin.com/app',
+      url: 'https://www.linkedin.com/in/mulia-andiki-030457331',
       icon: 'tabler:brand-linkedin',
     },
     youtube: {
-      url: 'https://youtube.com/app',
+      url: 'https://youtube.com',
       icon: 'mingcute:youtube-line',
     },
     tiktok: {
-      url: 'https://tiktok.com/app',
+      url: 'https://tiktok.com',
       icon: 'hugeicons:tiktok',
     },
   },

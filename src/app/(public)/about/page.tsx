@@ -4,7 +4,7 @@ import MainLayout from '@/core/layouts/Main.Layout';
 export default function About() {
   const data = {
     title: 'THE DOSSIER',
-    desc: 'Full-stack enthusiast, 6th-semester CS student, and UI/UX advocate based in Aceh, Indonesia.',
+    desc: 'Software Engineer — mahasiswa Informatika Semester 6 USK dengan fokus Frontend, Backend, AI, dan IoT.',
   };
   return (
     <MainLayout>

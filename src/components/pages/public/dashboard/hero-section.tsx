@@ -4,12 +4,16 @@ import SkillMatric from '@/components/organisms/SkillMatric';
 import CommitArchive from '@/components/organisms/CommitArchive';
 import { SectionProps } from '@/types';
 
+import { projects } from '@/constant/portfolio';
+
 const DashboardHeroSection: React.FC<SectionProps> = ({ title = 'My Analytics', desc = '' }) => {
+  const activeProjects = projects.filter((p) => p.period.includes('Sekarang')).length;
+
   const stats = [
-    { label: 'GITHUB COMMITS', value: '1,422', unit: 'THIS YEAR', bg: 'bg-neo-yellow' },
-    { label: 'CODING HOURS', value: '840+', unit: 'WAKA-TIME', bg: 'bg-neo-pink' },
-    { label: 'ACTIVE PROJECTS', value: '4', unit: 'IN PRODUCTION', bg: 'bg-neo-cyan' },
-    { label: 'UPTIME', value: '99.9%', unit: 'STABLE', bg: 'bg-neo-green' },
+    { label: 'TOTAL PROJECTS', value: String(projects.length), unit: 'COMPLETED & ACTIVE', bg: 'bg-neo-yellow' },
+    { label: 'ACTIVE BUILDS', value: String(activeProjects), unit: 'IN PROGRESS', bg: 'bg-neo-pink' },
+    { label: 'TECH STACK', value: '15+', unit: 'TOOLS MASTERED', bg: 'bg-neo-cyan' },
+    { label: 'INNOVILLAGE', value: 'TOP 180', unit: 'NASIONAL 2025', bg: 'bg-neo-green' },
   ];
 
   return (
