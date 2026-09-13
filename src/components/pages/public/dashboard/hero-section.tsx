@@ -1,19 +1,89 @@
-import React from 'react';
+'use client';
+
+import React, { useState } from 'react';
+
 import { NeoCard } from '@/components/atoms/NeoCard';
-import SkillMatric from '@/components/organisms/SkillMatric';
 import CommitArchive from '@/components/organisms/CommitArchive';
+import SkillMatric from '@/components/organisms/SkillMatric';
+import { initialGithubData, GithubDashboardData } from '@/constant/github';
+import { projects } from '@/constant/portfolio';
 import { SectionProps } from '@/types';
 
-import { projects } from '@/constant/portfolio';
-
 const DashboardHeroSection: React.FC<SectionProps> = ({ title = 'My Analytics', desc = '' }) => {
+  const [githubData, setGithubData] = useState<GithubDashboardData>(initialGithubData);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+
   const activeProjects = projects.filter((p) => p.period.includes('Sekarang')).length;
 
+  const handleRefresh = async () => {
+    setIsRefreshing(true);
+    try {
+      const contribRes = await fetch(
+        `https://github-contributions-api.jogruber.de/v4/${githubData.username}`
+      );
+      if (contribRes.ok) {
+        const contribJson = await contribRes.json();
+        const sorted = [...contribJson.contributions].sort((a, b) => a.date.localeCompare(b.date));
+        const recent365 = sorted.slice(-365);
+        const totalThisYear = contribJson.total?.['2026'] || githubData.totalContributionsThisYear;
+        const totalAllTime =
+          Object.values(contribJson.total || {}).reduce(
+            (a: number, b: unknown) => a + Number(b),
+            0
+          ) || githubData.totalContributionsAllTime;
+
+        setGithubData((prev) => ({
+          ...prev,
+          recentContributions: recent365,
+          totalContributionsThisYear: totalThisYear,
+          totalContributionsAllTime: totalAllTime,
+        }));
+      }
+
+      try {
+        const userRes = await fetch(`https://api.github.com/users/${githubData.username}`);
+        if (userRes.ok) {
+          const userJson = await userRes.json();
+          if (userJson.public_repos) {
+            setGithubData((prev) => ({
+              ...prev,
+              publicRepos: userJson.public_repos,
+            }));
+          }
+        }
+      } catch {
+        // Ignore rate-limit errors from GitHub REST API
+      }
+    } finally {
+      setIsRefreshing(false);
+    }
+  };
+
   const stats = [
-    { label: 'TOTAL PROJECTS', value: String(projects.length), unit: 'COMPLETED & ACTIVE', bg: 'bg-neo-yellow' },
-    { label: 'ACTIVE BUILDS', value: String(activeProjects), unit: 'IN PROGRESS', bg: 'bg-neo-pink' },
-    { label: 'TECH STACK', value: '15+', unit: 'TOOLS MASTERED', bg: 'bg-neo-cyan' },
-    { label: 'INNOVILLAGE', value: 'TOP 180', unit: 'NASIONAL 2025', bg: 'bg-neo-green' },
+    {
+      label: 'GIT COMMITS',
+      value: `${githubData.totalContributionsAllTime.toLocaleString()}+`,
+      unit: `${githubData.totalContributionsThisYear.toLocaleString()} IN 2026`,
+      bg: 'bg-neo-yellow',
+    },
+    {
+      label: 'TOTAL REPOS',
+      value: String(githubData.publicRepos),
+      unit: 'GITHUB REPOSITORIES',
+      bg: 'bg-neo-pink',
+    },
+    {
+      label: 'ACTIVE BUILDS',
+      value: String(activeProjects),
+      unit: 'PROJECTS IN PROGRESS',
+      bg: 'bg-neo-cyan',
+    },
+    {
+      label: 'INNOVILLAGE',
+      value: 'TOP 180',
+      unit: 'NASIONAL 2025',
+      bg: 'bg-neo-green',
+    },
   ];
 
   return (
@@ -47,9 +117,15 @@ const DashboardHeroSection: React.FC<SectionProps> = ({ title = 'My Analytics', 
         </div>
 
         <div className="grid lg:grid-cols-3 gap-12 mb-16">
-          <SkillMatric />
+          <SkillMatric skills={githubData.skillMatrix} totalRepos={githubData.publicRepos} />
 
-          <CommitArchive />
+          <CommitArchive
+            contributions={githubData.recentContributions}
+            totalThisYear={githubData.totalContributionsThisYear}
+            totalAllTime={githubData.totalContributionsAllTime}
+            onRefresh={handleRefresh}
+            isRefreshing={isRefreshing}
+          />
         </div>
       </div>
     </section>
